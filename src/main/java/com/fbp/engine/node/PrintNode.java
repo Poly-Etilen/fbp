@@ -4,14 +4,21 @@ import com.fbp.engine.core.InputPort;
 import com.fbp.engine.core.portImpl.InputPortImpl;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.core.Node;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-@RequiredArgsConstructor
 @Slf4j
+@Getter
 public class PrintNode implements Node {
     private final String id;
-    private InputPort inputPort = new InputPortImpl(null);
+    private final InputPort inputPort;
+
+    public PrintNode(String id) {
+        this.id = id;
+        this.inputPort = new InputPortImpl(this);
+    }
 
     @Override
     public String getId() {

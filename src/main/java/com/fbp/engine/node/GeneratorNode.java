@@ -17,6 +17,6 @@ public class GeneratorNode implements Node {
 
     @Override
     public void process(Message message) {
-
+        output.send(message);
     }
 }

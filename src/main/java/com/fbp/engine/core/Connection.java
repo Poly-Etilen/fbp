@@ -1,8 +1,6 @@
 package com.fbp.engine.core;
 
 import com.fbp.engine.message.Message;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
