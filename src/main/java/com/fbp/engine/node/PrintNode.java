@@ -13,11 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 public class PrintNode implements Node {
     private final String id;
-    private final InputPort inputPort;
+    private final InputPort inputPort = new InputPortImpl();
 
     public PrintNode(String id) {
         this.id = id;
-        this.inputPort = new InputPortImpl(this);
     }
 
     @Override
@@ -31,5 +30,15 @@ public class PrintNode implements Node {
         log.info("Message: {}", message.getId());
         log.info("Payload: {}", message.getPayload());
         log.info("Timestamp: {}", message.getTimestamp());
+    }
+
+    @Override
+    public void run() {
+        while (!Thread.currentThread().isInterrupted()) {
+            Message msg = inputPort.read();
+            if (msg != null) {
+                process(msg);
+            }
+        }
     }
 }
