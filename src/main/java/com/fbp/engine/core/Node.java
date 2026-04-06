@@ -4,5 +4,7 @@ import com.fbp.engine.message.Message;
 
 public interface Node extends Runnable{
     String getId();
+    void initialize();
     void process(Message message);
+    void shutdown();
 }

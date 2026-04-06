@@ -5,11 +5,11 @@ import com.fbp.engine.message.Message;
 
 import java.util.Map;
 
-public class GeneratorNode extends AbstractNode {
+public class TimerNode extends AbstractNode{
     private final long intervalMs;
     private int count = 0;
 
-    public GeneratorNode(String id, long intervalMs) {
+    public TimerNode(String id, long intervalMs) {
         super(id);
         this.intervalMs = intervalMs;
     }
@@ -26,15 +26,13 @@ public class GeneratorNode extends AbstractNode {
             OutputPort output = outputPorts.get("output");
             while (!Thread.currentThread().isInterrupted()) {
                 if (output != null) {
-                    count++;
-
-                    String payloadData = (count % 2 == 0) ? "Hello FBP " + count : "Hello from Generator " + count;
-                    Message msg = new Message("msg-" + count, Map.of("data", payloadData), System.currentTimeMillis());
+                    String payloadData = (count % 2 == 0) ? "hello" : "ignore";
+                    Message msg = new Message("timer-" + (++count), Map.of("data", payloadData), System.currentTimeMillis());
                     output.send(msg);
                 }
-                Thread.sleep(intervalMs);
             }
-        } catch (InterruptedException ie) {
+            Thread.sleep(intervalMs);
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         } finally {
             shutdown();
