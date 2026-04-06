@@ -12,7 +12,7 @@ public class Connection {
     @Setter
     private InputPort target;
 
-    public void transmit(Message message) {
+    public void deliver(Message message) {
         try {
             buffer.put(message);
         } catch (InterruptedException e) {
@@ -20,12 +20,16 @@ public class Connection {
         }
     }
 
-    public Message receive() {
+    public Message poll() {
         try {
             return buffer.take();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return null;
         }
+    }
+
+    public int getBufferSize() {
+        return buffer.size();
     }
 }

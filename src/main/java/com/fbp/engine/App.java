@@ -1,8 +1,8 @@
 package com.fbp.engine;
 
 import com.fbp.engine.core.Connection;
-import com.fbp.engine.core.portImpl.InputPortImpl;
-import com.fbp.engine.core.portImpl.OutputPortImpl;
+import com.fbp.engine.core.portImpl.DefaultInputPort;
+import com.fbp.engine.core.portImpl.DefaultOutputPort;
 import com.fbp.engine.node.FilterNode;
 import com.fbp.engine.node.GeneratorNode;
 import com.fbp.engine.node.LogNode;
@@ -19,10 +19,10 @@ public class App {
         FilterNode filter = new FilterNode("filter-1", "FBP");
         LogNode logNode = new LogNode("printer-1");
 
-        OutputPortImpl timerOut = new OutputPortImpl();
-        InputPortImpl filterIn = new InputPortImpl();
-        OutputPortImpl filterOut = new OutputPortImpl();
-        InputPortImpl printIn = new InputPortImpl();
+        DefaultOutputPort timerOut = new DefaultOutputPort();
+        DefaultInputPort filterIn = new DefaultInputPort();
+        DefaultOutputPort filterOut = new DefaultOutputPort();
+        DefaultInputPort printIn = new DefaultInputPort();
 
         generator.addOutputPort("output", timerOut);
         filter.addInputPort("input", filterIn);

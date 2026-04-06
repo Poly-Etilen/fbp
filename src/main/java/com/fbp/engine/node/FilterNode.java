@@ -4,20 +4,21 @@ import com.fbp.engine.core.OutputPort;
 import com.fbp.engine.message.Message;
 
 public class FilterNode extends AbstractNode{
-    private final String keyword;
+    private final String key;
+    private final double threshold;
 
-    public FilterNode(String id, String keyword) {
+    public FilterNode(String id, String key, double threshold) {
         super(id);
-        this.keyword = keyword;
+        this.key = key;
+        this.threshold = threshold;
     }
 
     @Override
     protected void onProcess(Message message) {
-        String data = (String) message.getPayload().get("data");
-        if (data != null && data.contains(keyword)) {
-            OutputPort output = outputPorts.get("output");
-            if (output != null) {
-                output.send(message);
+        if (message.hasKey(key)) {
+            Double value = message.get(key);
+            if (value != null && value >= threshold) {
+                send("out", message);
             }
         }
     }

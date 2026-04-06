@@ -3,6 +3,8 @@ package com.fbp.engine.node;
 import com.fbp.engine.core.InputPort;
 import com.fbp.engine.core.Node;
 import com.fbp.engine.core.OutputPort;
+import com.fbp.engine.core.portImpl.DefaultInputPort;
+import com.fbp.engine.core.portImpl.DefaultOutputPort;
 import com.fbp.engine.message.Message;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,14 +26,38 @@ public abstract class AbstractNode implements Node {
         return id;
     }
 
-    public void addInputPort(String name, InputPort inputPort) {
-        inputPorts.put(name, inputPort);
+    public void addInputPort(String name) {
+        inputPorts.put(name, new DefaultInputPort(this));
     }
-    public void addOutputPort(String name, OutputPort outputPort) {
-        outputPorts.put(name, outputPort);
+    public void addOutputPort(String name) {
+        outputPorts.put(name, new DefaultOutputPort());
+    }
+
+    public InputPort getInput(String name) {
+        return inputPorts.get(name);
+    }
+
+    public OutputPort getOutput(String name) {
+        return outputPorts.get(name);
     }
 
     protected abstract void onProcess(Message message);
+
+    public InputPort getInputPort(String name) {
+        return inputPorts.get(name);
+    }
+    public OutputPort getOutputPort(String name) {
+        return outputPorts.get(name);
+    }
+
+    protected void send(String portName, Message message) {
+        OutputPort out =  outputPorts. get(portName);
+        if (out != null) {
+            out.send(message);
+        } else  {
+            log.warn("No such output port {}", portName);
+        }
+    }
 
     @Override
     public void initialize() {
@@ -53,12 +79,16 @@ public abstract class AbstractNode implements Node {
     public void run() {
         initialize();
         try {
-            InputPort inputPort = inputPorts.get("input");
-            if (inputPort != null) {
+            InputPort in = inputPorts.get("in");
+            if (in != null) {
                 while (!Thread.currentThread().isInterrupted()) {
-                    Message msg = inputPort.read();
+                    Message msg = in.read();
                     if (msg != null) {
-                        process(msg);
+                        try {
+                            process(msg);
+                        } catch (Exception e) {
+                            log.error("Error processing node {}", id, e);
+                        }
                     }
                 }
             }
