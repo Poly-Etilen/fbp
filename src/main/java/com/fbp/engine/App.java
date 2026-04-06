@@ -4,6 +4,7 @@ import com.fbp.engine.core.Connection;
 import com.fbp.engine.core.portImpl.InputPortImpl;
 import com.fbp.engine.core.portImpl.OutputPortImpl;
 import com.fbp.engine.node.FilterNode;
+import com.fbp.engine.node.GeneratorNode;
 import com.fbp.engine.node.PrintNode;
 import com.fbp.engine.node.TimerNode;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class App {
     public static void main(String[] args) {
-        TimerNode timer = new TimerNode("timer-1", 1000);
+        GeneratorNode generator = new GeneratorNode("generator-1", 1000);
         FilterNode filter = new FilterNode("filter-1", "FBP");
         PrintNode printNode = new PrintNode("printer-1");
 
@@ -24,10 +25,9 @@ public class App {
         OutputPortImpl filterOut = new OutputPortImpl();
         InputPortImpl printIn = new InputPortImpl();
 
-        timer.addOutputPort("output", timerOut);
+        generator.addOutputPort("output", timerOut);
         filter.addInputPort("input", filterIn);
         filter.addOutputPort("output", filterOut);
-
         printNode.addInputPort("input", printIn);
 
         Connection conn1 = new Connection();
@@ -41,7 +41,7 @@ public class App {
         ExecutorService executor = Executors.newFixedThreadPool(3);
 
         log.info("--- FBP Engine Started ---");
-        executor.submit(timer);
+        executor.submit(generator);
         executor.submit(filter);
         executor.submit(printNode);
     }
