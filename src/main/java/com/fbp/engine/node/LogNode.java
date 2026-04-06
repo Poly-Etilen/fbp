@@ -6,9 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Getter
-public class PrintNode extends AbstractNode {
+public class LogNode extends AbstractNode {
 
-    public PrintNode(String id) {
+    public LogNode(String id) {
         super(id);
     }
 
