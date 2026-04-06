@@ -1,15 +1,11 @@
 package com.fbp.engine;
 
 import com.fbp.engine.core.Connection;
-import com.fbp.engine.core.portImpl.InputPortImpl;
 import com.fbp.engine.core.portImpl.OutputPortImpl;
-import com.fbp.engine.message.Message;
 import com.fbp.engine.node.GeneratorNode;
 import com.fbp.engine.node.PrintNode;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.LinkedList;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

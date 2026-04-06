@@ -1,12 +1,10 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.InputPort;
+import com.fbp.engine.core.Node;
 import com.fbp.engine.core.portImpl.InputPortImpl;
 import com.fbp.engine.message.Message;
-import com.fbp.engine.core.Node;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
