@@ -27,10 +27,10 @@ public abstract class AbstractNode implements Node {
     }
 
     public void addInputPort(String name) {
-        inputPorts.put(name, new DefaultInputPort(this));
+        inputPorts.put(name, new DefaultInputPort(name, this));
     }
     public void addOutputPort(String name) {
-        outputPorts.put(name, new DefaultOutputPort());
+        outputPorts.put(name, new DefaultOutputPort(name));
     }
 
     public InputPort getInput(String name) {

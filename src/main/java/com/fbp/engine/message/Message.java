@@ -36,6 +36,12 @@ public class Message {
         return new Message(newPayload);
     }
 
+    public Message withEntry(String key, Object value) {
+        Map<String, Object> newPayload = new HashMap<>(this.payload);
+        newPayload.put(key, value);
+        return new Message(newPayload);
+    }
+
     @Override
     public String toString() {
         return String.format("Message[id=%s, payload=%s, timestamp=%d]", id, payload, timestamp);
