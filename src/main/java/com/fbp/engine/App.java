@@ -1,22 +1,31 @@
 package com.fbp.engine;
 
-import com.fbp.engine.message.Message;
+import com.fbp.engine.core.Connection;
+import com.fbp.engine.node.FilterNode;
+import com.fbp.engine.node.GeneratorNode;
 import com.fbp.engine.node.PrintNode;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Map;
 
 @Slf4j
 public class App {
     public static void main(String[] args) {
-        Message msg = new Message(Map.of("temperature", 25.5, "sensorId", "sensor-A"));
-        Message modifiedMsg = msg.withEntry("status", "NORMAL");
-
+        GeneratorNode generator = new GeneratorNode("sensor-A");
+        FilterNode filter = new FilterNode("temp-filter", "temperature", 30.0);
         PrintNode printer = new PrintNode("printer-1");
 
-        log.info("--- 원본 메시지 출력 ---");
-        printer.process(msg);
-        log.info("--- 수정된 메시지 출력 ---");
-        printer.process(modifiedMsg);
+        Connection conn1 = new Connection();
+        Connection conn2 = new Connection();
+
+        generator.getOutputPort().connect(conn1);
+        conn1.setTarget(filter.getInputPort());
+
+        filter.getOutputPort().connect(conn2);
+        conn2.setTarget(printer.getInputPort());
+
+        log.info("--- 테스트 1 (필터 차단) ---");
+        generator.generate("temperature", 25.5);
+
+        log.info("--- 테스트 2 필터 통과 ---");
+        generator.generate("temperature", 35.5);
     }
 }
