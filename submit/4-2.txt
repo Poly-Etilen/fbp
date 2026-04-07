@@ -1,0 +1,15 @@
+put()/take()만으로 동일한 동작이 되는 이유를 정리하라
+
+synchronized, wait(), notify()를 구현해야하지만 put()/take()만으로 완벽하게 동작한 이유는 다음과 같다.
+BlockingQueue의 내부에는 synchronized 대신에 ReentrantLock과 Condition을 사용함.
+* Condition: 특정 상태를 기다리는 스레드 들의 대기실. 이 대기실은 Lock 객체를 통해 얼마든지 무한대로 만들어 낼 수 있음.
+Condition에는 두가지 상태가 있음. notEmpty와 NotFull로 이루어져있음.
+
+put()메서드의 작동 방식은 다음과 같다.
+1. Lock을 얻음 <- synchronized 대체
+2. 큐가 가득 차 있다면 공간이 생길 때까지 대기함. 이때 내부에서 notFull.await()을 호출함. <- wait() 대체
+3. 공간이 확보되면 데이터를 삽입함.
+4. 데이터를 넣은 후 소비 스레드에게 notEmpty.signal을 보내 깨움. <- notify() 대체
+5. Lock을 해제함.
+
+따라서 따로 synchronized, wait(), notify를 호출할 필요가 없음. take()도 마찬가지임.
