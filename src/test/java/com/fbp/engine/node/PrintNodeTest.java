@@ -10,25 +10,18 @@ import java.util.Map;
 
 public class PrintNodeTest {
     @Test
-    @DisplayName("getId 반환")
+    @DisplayName("InputPort 조회")
     void test1() {
         PrintNode printer = new PrintNode("printer-1");
-        Assertions.assertEquals("printer-1", printer.getId());
+        Assertions.assertNotNull(printer.getInputPort());
     }
 
     @Test
-    @DisplayName("process 정상 동작")
+    @DisplayName("InputPort를 통한 수신")
     void test2() {
         PrintNode printer = new PrintNode("printer-1");
-        Message msg = new Message(Map.of("temperature", 25.5));
+        Message msg = new Message(Map.of("message", "Hello World!"));
 
-        Assertions.assertDoesNotThrow(() -> printer.process(msg));
-    }
-
-    @Test
-    @DisplayName("Node 인터페이스 구현")
-    void test3() {
-        PrintNode printer = new PrintNode("printer-1");
-        Assertions.assertTrue(printer instanceof Node);
+        Assertions.assertDoesNotThrow(() -> printer.getInputPort().receive(msg));
     }
 }
