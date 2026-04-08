@@ -9,3 +9,6 @@
 /Users/chosun-nhn22/fbp-engine/src/main/java/com/fbp/engine/node/FilterNode.java
 /Users/chosun-nhn22/fbp-engine/src/main/java/com/fbp/engine/node/GeneratorNode.java
 /Users/chosun-nhn22/fbp-engine/src/main/java/com/fbp/engine/node/PrintNode.java
+/Users/chosun-nhn22/fbp-engine/src/main/java/com/fbp/engine/practice/ArrayListBufferIssue.java
+/Users/chosun-nhn22/fbp-engine/src/main/java/com/fbp/engine/practice/BlockingQueueBuffer.java
+/Users/chosun-nhn22/fbp-engine/src/main/java/com/fbp/engine/practice/synchronizedBuffer.java

@@ -1,44 +1,32 @@
 package com.fbp.engine.node;
 
-import com.fbp.engine.core.Node;
-import com.fbp.engine.core.port.InputPort;
-import com.fbp.engine.core.port.OutputPort;
-import com.fbp.engine.core.port.impl.DefaultInputPort;
-import com.fbp.engine.core.port.impl.DefaultOutputPort;
 import com.fbp.engine.message.Message;
-import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
-public class FilterNode implements Node {
-    private final String id;
+@Slf4j
+public class FilterNode extends AbstractNode {
     private final String key;
     private final double threshold;
-    @Getter
-    private final InputPort inputPort;
-    @Getter
-    private final OutputPort outputPort;
+
 
     public FilterNode(String id, String key, double threshold) {
-        this.id = id;
+        super(id);
         this.key = key;
         this.threshold = threshold;
-        this.inputPort = new DefaultInputPort("in", this);
-        this.outputPort = new DefaultOutputPort("out");
+        addInputPort("in");
+        addOutputPort("out");
     }
 
     @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void process(Message message) {
-        if (message.hasKey(key)) {
-            Object value = message.get(key);
-            if (value instanceof Number) {
-                double numValue = ((Number) value).doubleValue();
-                if (numValue >= threshold) {
-                    outputPort.send(message);
-                }
+    protected void onProcess(Message message) {
+        Object value = message.get(key);
+        if (value instanceof Number) {
+            double doubleValue = ((Number)value).doubleValue();
+            if (doubleValue >= threshold) {
+                log.info("[{}] 조건 통과: {}", getId(), doubleValue);
+                send("out", message);
+            } else {
+                log.info("[{}] 조건 미달 : {}",  getId(), doubleValue);
             }
         }
     }

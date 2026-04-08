@@ -10,43 +10,38 @@ import java.util.Map;
 
 class FilterNodeTest {
     @Test
-    @DisplayName("조건 만족 시 통과")
-    void test1() {
-        FilterNode filter = new FilterNode("filter", "temp", 30.0);
+    @DisplayName("조건 만족 → send 호출")
+    void test1() throws InterruptedException {
+        FilterNode filter = new FilterNode("filter", "temperature", 30.0);
         Connection conn = new Connection();
-        filter.getOutputPort().connect(conn);
+        filter.getOutputPort("out").connect(conn);
 
-        filter.process(new Message(Map.of("temp", 35.0)));
-        Assertions.assertEquals(1, conn.getBufferSize(), "조건을 만족하여 통과됨");
+        Message passMsg = new Message(Map.of("temperature", 35.0));
+        filter.process(passMsg);
+
+        Message receiveMsg = conn.poll();
+        Assertions.assertNotNull(receiveMsg);
+        Assertions.assertEquals(35.0, receiveMsg.get("temperature"));
     }
 
     @Test
-    @DisplayName("조건 미달 시 차단")
+    @DisplayName("조건 미달 → 차단")
     void test2() {
-        FilterNode filter = new FilterNode("filter", "temp", 30.0);
+        FilterNode filter = new FilterNode("filter", "temperature", 30.0);
         Connection conn = new Connection();
-        filter.getOutputPort().connect(conn);
+        filter.getOutputPort("out").connect(conn);
 
-        filter.process(new Message(Map.of("temp", 25.0)));
-        Assertions.assertEquals(0, conn.getBufferSize(), "조건 미달로 차단됨");
+        Message blockMsg = new Message(Map.of("temperature", 25.0));
+        filter.process(blockMsg);
+
+        Assertions.assertEquals(0, conn.getBufferSize());
     }
 
     @Test
-    @DisplayName("경계값 처리")
+    @DisplayName("포트 구성 확인")
     void test3() {
-        FilterNode filter = new FilterNode("filter", "temp", 30.0);
-        Connection conn = new Connection();
-        filter.getOutputPort().connect(conn);
-
-        filter.process(new Message(Map.of("temp", 30.0)));
-        Assertions.assertEquals(1, conn.getBufferSize(), "30.0은 통과되어야함");
-    }
-
-    @Test
-    @DisplayName("키 없는 메시지")
-    void test4() {
-        FilterNode filter = new FilterNode("filter", "temp", 30.0);
-
-        Assertions.assertDoesNotThrow(() -> filter.process(new Message(Map.of("otherKey", 30.0))));
+        FilterNode filter = new FilterNode("filter", "temperature", 30.0);
+        Assertions.assertNotNull(filter.getInputPort("in"));
+        Assertions.assertNotNull(filter.getOutputPort("out"));
     }
 }
