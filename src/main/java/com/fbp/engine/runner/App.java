@@ -2,69 +2,103 @@ package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
 import com.fbp.engine.message.Message;
-import com.fbp.engine.node.FilterNode;
-import com.fbp.engine.node.PrintNode;
-import com.fbp.engine.node.TimerNode;
+import com.fbp.engine.node.*;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Map;
 
 
 @Slf4j
 public class App {
     public static void main(String[] args) throws InterruptedException{
-        TimerNode timer = new TimerNode("timer-1", 500);
-        FilterNode filter = new FilterNode("temp-filter", "tick", 3.0);
+        GeneratorNode generator = new GeneratorNode("generator-temp");
+        TransformNode fToc = new TransformNode("f-to-c", message -> {
+            double f = (double) message.get("F");
+            double c = (f - 32) * 5 / 9;
+            return new Message(Map.of("C", c));
+        });
         PrintNode printer = new PrintNode("printer-1");
 
         Connection conn1 = new Connection();
         Connection conn2 = new Connection();
 
-        timer.getOutputPort("out").connect(conn1);
-        filter.getOutputPort("out").connect(conn2);
+        generator.getOutputPort("out").connect(conn1);
+        fToc.getOutputPort("out").connect(conn2);
 
-        log.info("--- TimerNode(0.5초 주기) → FilterNode(tick >= 3) → PrintNode 파이프라인 ---");
-        Thread filterThread = new Thread(() -> {
+        generator.generate("F", 100.0);
+        fToc.process(conn1.poll());
+        printer.process(conn2.poll());
+
+        log.info("--- 분기 플로우 시작 ---");
+        TimerNode timer = new TimerNode("timer", 1000);
+        SplitNode split = new SplitNode("split", "tick", 3.0);
+        PrintNode warnPrint = new PrintNode("print-warn");
+        PrintNode normalPrint = new PrintNode("print-normal");
+
+        Connection tToS = new Connection();
+        Connection sToWarn = new Connection();
+        Connection sToNormal = new Connection();
+
+        timer.getOutputPort("out").connect(tToS);
+        split.getOutputPort("match").connect(sToWarn);
+        split.getOutputPort("mismatch").connect(sToNormal);
+
+        Thread splitThread = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
-                    Message msg = conn1.poll();
-                    filter.process(msg);
+                    Message msg = tToS.poll();
+                    if (msg != null) {
+                        split.process(msg);
+                    } else  {
+                        Thread.sleep(10);
+                    }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                    break;
                 }
             }
-            log.info("[Filter-Thread] 종료");
-        }, "Filter-Thread");
-        Thread printThread = new Thread(() -> {
+        });
+
+        Thread warnThread = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
-                    Message msg = conn2.poll();
-                    printer.process(msg);
+                    Message msg = sToWarn.poll();
+                    if (msg != null) {
+                        warnPrint.process(msg);
+                    } else {
+                        Thread.sleep(10);
+                    }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                    break;
                 }
             }
-            log.info("[Print-Thread] 종료");
-        }, "Print-Thread");
+        });
 
-        filterThread.start();
-        printThread.start();
+        Thread normalThread = new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    Message msg = sToNormal.poll();
+                    if (msg != null) {
+                        normalPrint.process(msg);
+                    } else {
+                        Thread.sleep(10);
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
 
-        log.info("시스템 초기화 및 가동");
+        splitThread.start();
+        warnThread.start();
+        normalThread.start();
+
         timer.initialize();
-        filter.initialize();
-        printer.initialize();
-
-        Thread.sleep(3000);
-
-        log.info("3초 경과, 시스템 종료 요청");
+        Thread.sleep(7000);
         timer.shutdown();
-        filter.shutdown();
-        printer.shutdown();
 
-        filterThread.interrupt();
-        printThread.interrupt();
+        splitThread.interrupt();
+        warnThread.interrupt();
+        normalThread.interrupt();
 
-        log.info("--- 파이프라인 종료 ---");
     }
 }
