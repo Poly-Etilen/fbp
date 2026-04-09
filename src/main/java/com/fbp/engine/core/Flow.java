@@ -2,6 +2,7 @@ package com.fbp.engine.core;
 
 import com.fbp.engine.node.AbstractNode;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
 
@@ -11,7 +12,10 @@ public class Flow {
     private final Map<String, AbstractNode> nodes = new LinkedHashMap<>();
     private final List<FlowConnection> connections = new ArrayList<>();
 
-    private enum State {UNVISITED, VISITING, VISITED;}
+    public enum FlowState {STOPPED, RUNNING}
+    private enum State {UNVISITED, VISITING, VISITED}
+    @Setter
+    private FlowState state = FlowState.STOPPED;
 
     @Getter
     public static class FlowConnection {
@@ -114,10 +118,10 @@ public class Flow {
     }
 
     private boolean dfs(String nodeId, Map<String, List<String>> adjList, Map<String, State> states) {
-        states.put(nodeId, State.VISITED);
+        states.put(nodeId, State.VISITING);
         for (String neighbor : adjList.get(nodeId)) {
             State neighborState = states.get(neighbor);
-            if (neighborState == State.VISITED) {
+            if (neighborState == State.VISITING) {
                 return true;
             } else if (neighborState == State.UNVISITED) {
                 if (dfs(neighbor, adjList, states)) {
