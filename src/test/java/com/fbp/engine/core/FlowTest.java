@@ -1,6 +1,5 @@
-package com.fbp.engine.core.port.impl;
+package com.fbp.engine.core;
 
-import com.fbp.engine.core.Flow;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.AbstractNode;
 import com.fbp.engine.node.PrintNode;

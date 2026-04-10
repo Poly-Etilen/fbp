@@ -13,25 +13,15 @@ import java.util.Map;
 class ConnectionTest {
     @Test
     @DisplayName("deliver 후 target 수신")
-    void test1() {
+    void test1() throws InterruptedException{
         Connection conn = new Connection();
-        List<Message> received = new ArrayList<>();
-
-        InputPort mockTarget = new InputPort() {
-            @Override
-            public String getName() {return "mockTarget";}
-            @Override
-            public void receive(Message message) {
-                received.add(message);
-            }
-        };
-        conn.setTarget(mockTarget);
 
         Message msg = new Message(Map.of("data", 1));
         conn.deliver(msg);
 
-        Assertions.assertEquals(1, received.size(), "타겟이 메시지를 수신해야 함.");
-        Assertions.assertEquals(msg, received.getFirst());
+        Message polledMsg = conn.poll();
+        Assertions.assertNotNull(polledMsg);
+        Assertions.assertEquals(msg, polledMsg);
     }
 
     @Test
@@ -54,23 +44,15 @@ class ConnectionTest {
 
     @Test
     @DisplayName("다수 메시지 순서 보장")
-    void test4() {
+    void test4() throws InterruptedException {
         Connection conn = new Connection();
-        List<Message> received = new ArrayList<>();
-        conn.setTarget(new InputPort() {
-            @Override
-            public String getName() {return "in";}
-            @Override
-            public void receive(Message message) {
-                received.add(message);
-            }
-        });
+
         conn.deliver(new Message(Map.of("seq", 1)));
         conn.deliver(new Message(Map.of("seq", 2)));
         conn.deliver(new Message(Map.of("seq", 3)));
 
-        Assertions.assertEquals(1, (int) received.getFirst().get("seq"));
-        Assertions.assertEquals(2, (int) received.get(1).get("seq"));
-        Assertions.assertEquals(3, (int) received.get(2).get("seq"));
+        Assertions.assertEquals(1, (int) conn.poll().get("seq"));
+        Assertions.assertEquals(2, (int) conn.poll().get("seq"));
+        Assertions.assertEquals(3, (int) conn.poll().get("seq"));
     }
 }

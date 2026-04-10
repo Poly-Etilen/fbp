@@ -1,6 +1,5 @@
 package com.fbp.engine.core.port.impl;
 
-import com.fbp.engine.core.Node;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.AbstractNode;
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-public class DefaultInputTest {
+class DefaultInputPortTest {
     static class MockNode extends AbstractNode {
         boolean isProcessCalled = false;
         public MockNode(String id) {

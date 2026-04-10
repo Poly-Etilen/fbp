@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-class FilterWriterNodeTest {
+class FiltWriterNodeTest {
     private final String TEST_FILE_PATH = "test_output.txt";
     private FileWriterNode node;
 
