@@ -1,0 +1,2 @@
+Message{id='20339761-284f-4cb5-95a4-c880f7fa837f', timestamp=1775721024193, payload={temperature=23.0, unit=C, sensorId=t-sensor, timestamp=1775721024193}}
+Message{id='37674229-3c5e-4886-8c1e-12476472b5cd', timestamp=1775721030193, payload={temperature=20.3, unit=C, sensorId=t-sensor, timestamp=1775721030193}}
