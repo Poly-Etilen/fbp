@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.fbp.engine.node.TemperatureSensorNodeTest" time="0.005" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.fbp.engine.node.ProtocolNodeTest" time="0.384" tests="7" errors="0" skipped="0" failures="3">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -64,22 +64,68 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="test1" classname="com.fbp.engine.node.TemperatureSensorNodeTest" time="0.001">
-    <system-out><![CDATA[14:20:12.693 [main] INFO com.fbp.engine.node.AbstractNode -- [t1] processing message...
+  <testcase name="test1" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.002"/>
+  <testcase name="test2" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.0"/>
+  <testcase name="test3" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.021">
+    <failure message="expected: &lt;CONNECTED&gt; but was: &lt;ERROR&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <CONNECTED> but was: <ERROR>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.fbp.engine.node.ProtocolNodeTest.test3(ProtocolNodeTest.java:37)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[14:20:09.461 [main] ERROR com.fbp.engine.node.ProtocolNode -- [echo-node] 연결 실패: Connection refused. 5000ms 후 재연결 시도
 ]]></system-out>
   </testcase>
-  <testcase name="test2" classname="com.fbp.engine.node.TemperatureSensorNodeTest" time="0.0">
-    <system-out><![CDATA[14:20:12.694 [main] INFO com.fbp.engine.node.AbstractNode -- [t1] processing message...
+  <testcase name="test4" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.001">
+    <system-out><![CDATA[14:20:09.467 [main] ERROR com.fbp.engine.node.ProtocolNode -- [echo-node] 연결 실패: Connection refused. 5000ms 후 재연결 시도
+14:20:09.468 [main] INFO com.fbp.engine.node.EchoProtocolNode -- [echo-node] Echo 서버 소켓 닫힘
+14:20:09.468 [main] INFO com.fbp.engine.node.ProtocolNode -- [echo-node] 프로토콜 노드 종료 맟 연결 해제
 ]]></system-out>
   </testcase>
-  <testcase name="test3" classname="com.fbp.engine.node.TemperatureSensorNodeTest" time="0.001">
-    <system-out><![CDATA[14:20:12.695 [main] INFO com.fbp.engine.node.AbstractNode -- [temp-sensor-99] processing message...
+  <testcase name="test5" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.001">
+    <failure message="expected: &lt;CONNECTED&gt; but was: &lt;ERROR&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <CONNECTED> but was: <ERROR>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.fbp.engine.node.ProtocolNodeTest.test5(ProtocolNodeTest.java:60)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[14:20:09.469 [main] ERROR com.fbp.engine.node.ProtocolNode -- [echo-node] 연결 실패: Connection refused. 5000ms 후 재연결 시도
 ]]></system-out>
   </testcase>
-  <testcase name="test4" classname="com.fbp.engine.node.TemperatureSensorNodeTest" time="0.0">
-    <system-out><![CDATA[14:20:12.695 [main] INFO com.fbp.engine.node.AbstractNode -- [t1] processing message...
-14:20:12.695 [main] INFO com.fbp.engine.node.AbstractNode -- [t1] processing message...
-14:20:12.695 [main] INFO com.fbp.engine.node.AbstractNode -- [t1] processing message...
+  <testcase name="test6" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.001">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at com.fbp.engine.node.ProtocolNodeTest.test6(ProtocolNodeTest.java:74)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[14:20:09.470 [main] ERROR com.fbp.engine.node.ProtocolNode -- [echo-node] 연결 실패: Connection refused. 5000ms 후 재연결 시도
+]]></system-out>
+  </testcase>
+  <testcase name="test7" classname="com.fbp.engine.node.ProtocolNodeTest" time="0.352">
+    <system-out><![CDATA[14:20:09.471 [main] ERROR com.fbp.engine.node.ProtocolNode -- [retry-Node] 연결 실패: 의도적인 강제 연결 실패. 100ms 후 재연결 시도
+14:20:09.573 [pool-16-thread-1] ERROR com.fbp.engine.node.ProtocolNode -- [retry-Node] 연결 실패: 의도적인 강제 연결 실패. 100ms 후 재연결 시도
+14:20:09.677 [pool-16-thread-1] ERROR com.fbp.engine.node.ProtocolNode -- [retry-Node] 연결 실패: 의도적인 강제 연결 실패. 100ms 후 재연결 시도
+14:20:09.779 [pool-16-thread-1] ERROR com.fbp.engine.node.ProtocolNode -- [retry-Node] 연결 실패: 의도적인 강제 연결 실패. 100ms 후 재연결 시도
+14:20:09.823 [main] INFO com.fbp.engine.node.ProtocolNode -- [retry-Node] 프로토콜 노드 종료 맟 연결 해제
 ]]></system-out>
   </testcase>
 </testsuite>
