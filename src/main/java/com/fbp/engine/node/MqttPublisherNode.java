@@ -23,6 +23,11 @@ public class MqttPublisherNode extends ProtocolNode{
 
     @Override
     protected void connect() throws Exception {
+        if (client != null && client.isConnected()) {
+            log.info("[{}] 이미 연결되어 있습니다. 중복 연결 무시.", getId());
+            return;
+        }
+
         String brokerUrl = (String) config.getOrDefault("brokerUrl", "tcp://localhost:1883");
         String clientId = (String) config.getOrDefault("clientId", "pub-" + getId());
         client = new MqttClient(brokerUrl, clientId, new MemoryPersistence());
