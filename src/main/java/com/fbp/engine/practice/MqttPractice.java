@@ -6,6 +6,8 @@ import org.eclipse.paho.mqttv5.common.MqttException;
 import org.eclipse.paho.mqttv5.common.MqttMessage;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 
+
+// stage2, 2-2
 @Slf4j
 public class MqttPractice {
     public static void main(String[] args) {

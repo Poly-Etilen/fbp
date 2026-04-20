@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+
+// stage2, 2-6
 @Slf4j
 public class MqttPublisherApp {
     public static void main(String[] args) {
