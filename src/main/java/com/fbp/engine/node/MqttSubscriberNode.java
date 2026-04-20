@@ -39,14 +39,7 @@ public class MqttSubscriberNode extends ProtocolNode{
             @Override
             public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
                 String payloadStr = new String(mqttMessage.getPayload());
-                Map<String, Object> payloadMap;
-
-                try {
-                    payloadMap = objectMapper.readValue(payloadStr, Map.class);
-                } catch (Exception e) {
-                    payloadMap = new HashMap<>();
-                    payloadMap.put("rawPayload", payloadStr);
-                }
+                Map<String, Object> payloadMap = parsePayload(payloadStr);
 
                 payloadMap.put("topic", s);
                 payloadMap.put("mqttTimestamp", System.currentTimeMillis() );
@@ -106,5 +99,16 @@ public class MqttSubscriberNode extends ProtocolNode{
     @Override
     protected void onProcess(Message message) {
 
+    }
+
+    protected Map<String, Object> parsePayload(String payloadStr) {
+        Map<String, Object> payloadMap;
+        try {
+            payloadMap = objectMapper.readValue(payloadStr, Map.class);
+        } catch (Exception e) {
+            payloadMap = new HashMap<>();
+            payloadMap.put("rawPayload", payloadStr);
+        }
+        return payloadMap;
     }
 }

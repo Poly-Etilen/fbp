@@ -95,9 +95,12 @@ public class MqttPublisherNode extends ProtocolNode{
             return;
         }
         try {
-            String defaultTopic = (String) config.getOrDefault("topic", "default/topic");
-            String targetTopic = message.getPayload().containsKey("topic")
-                    ? (String) message.getPayload().get("topic") : defaultTopic;
+            String targetTopic = (String) config.get("topic");
+            if (targetTopic == null || targetTopic.trim().isEmpty()) {
+                targetTopic = message.getPayload().containsKey("topic")
+                        ? (String) message.getPayload().get("topic")
+                        : "default/topic"; // 둘 다 없으면 기본값 사용
+            }
 
             String jsonPayload = mapper.writeValueAsString(message.getPayload());
             MqttMessage mqttMessage = new MqttMessage(jsonPayload.getBytes());
