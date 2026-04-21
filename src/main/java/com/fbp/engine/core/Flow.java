@@ -57,6 +57,7 @@ public class Flow {
         }
 
         Connection connection = new Connection();
+        connection.setTarget(targetNode.getInputPort(targetPort));
         sourceNode.getOutputPort(sourcePort).connect(connection);
 
         connections.add(new FlowConnection(sourceNodeId, sourcePort, targetNodeId, targetPort, connection));
