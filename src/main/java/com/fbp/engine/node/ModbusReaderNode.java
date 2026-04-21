@@ -6,6 +6,7 @@ import com.fbp.engine.protocol.ModbusTcpClient;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,8 +51,10 @@ public class ModbusReaderNode extends ProtocolNode{
 
     @Override
     protected void onProcess(Message message) {
+        log.info("[{}] Timer 트리거 수신.", getId());
         try {
             int[] rawValues = client.readHoldingRegisters(slaveId, startAddress, count);
+            log.info("[{}] Modbus 데이터 읽기 성공: {}", getId(), Arrays.toString(rawValues));
 
             Map<String, Object> payload = new HashMap<>();
             payload.put("slaveId", slaveId);
@@ -75,7 +78,11 @@ public class ModbusReaderNode extends ProtocolNode{
             } else {
                 payload.put("registers", rawValues);
             }
+            Message outMsg = new Message(payload);
+            log.info("[{}] 다음 노드로 메시지를 전송함: {}", getId(), outMsg.getPayload());
+            send("out", outMsg);
         } catch (ModbusException| IOException e) {
+            log.error("[{}] MODBUS 통신 실패 또는 에러 발생: {}",  getId(), e.getMessage());
             Map<String, Object> errPayload = new HashMap<>();
             errPayload.put("error", "MODBUS 통신 실패: " + e.getMessage());
 

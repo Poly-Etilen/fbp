@@ -52,9 +52,9 @@ public abstract class ProtocolNode extends AbstractNode{
         } catch (Exception e) {
             this.connectionState = ConnectionState.ERROR;
             log.error("[{}] 연결 실패: {}. {}ms 후 재연결 시도", getId(), e.getMessage(), reconnectIntervalMs);
+            reconnect();
         }
 
-        reconnect();
     }
 
     protected void reconnect() {
