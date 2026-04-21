@@ -1,0 +1,33 @@
+1. 슬레이브 1, 주소 10번부터 Holding Register 5개 읽기 (FC 03)
+[00 01]     Transaction ID = 1
+[00 00]     Protocol ID = 0 (0번 = Modbus TCP)
+[00 06]     Length = 6 (Unit ID(1) + FC(1) + Start Address(2) + Quantity(2) = 6 Bite)
+[01]        Unit ID = 1
+---
+[03]        FC 03 = Read Holding Registers
+[00 0A]     Start Address = 10번 주소부터 시작
+[00 05]     Quantity = 5개 값을 읽기
+
+2. 슬레이브 1, 주소 5번에 값 1234 쓰기 (FC 06)
+[00 01]     Transaction ID = 1
+[00 00]     Protocol ID = 0
+[00 06]     Length = 6 (Unit ID(1) + FC(1) + Start Address(2) + Quantity(2) = 6 Bite)
+[01]        Unit ID = 1
+---
+[06]        FC 06 = Write Single Register
+[00 05]     Start Address = 5번 주소부터 시작
+[04 D2]     Register Value = 1234 = 0x04D2
+
+3. 읽기 응답: 레지스터 5개 값이 [100, 200, 300, 400, 500]
+[00 01]     Transaction ID = 1
+[00 00]     Protocol ID = 0
+[00 06]     Length = 13 (Unit ID(1) + FC(1) + Byte Count(1) + Data(10) = 13 Bite)
+[01]        Unit ID = 1
+---
+[03]        FC 03
+[10]        Byte Count = 10, 한 데이터당 2바이트, 총 5개의 데이터 = 10 Byte
+[00 64]     100
+[00 C8]     200
+[01 2C]     300
+[01 90]     400
+[01 F4]     500
