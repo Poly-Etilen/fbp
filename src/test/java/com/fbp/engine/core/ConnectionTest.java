@@ -1,13 +1,10 @@
 package com.fbp.engine.core;
 
-import com.fbp.engine.core.port.InputPort;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 class ConnectionTest {

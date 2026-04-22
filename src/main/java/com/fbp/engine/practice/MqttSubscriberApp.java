@@ -1,6 +1,5 @@
 package com.fbp.engine.practice;
 
-import com.fbp.engine.core.Connection;
 import com.fbp.engine.core.Flow;
 import com.fbp.engine.core.FlowEngine;
 import com.fbp.engine.node.MqttSubscriberNode;

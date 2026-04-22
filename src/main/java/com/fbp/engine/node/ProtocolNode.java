@@ -1,8 +1,6 @@
 package com.fbp.engine.node;
 
-import com.fbp.engine.core.Connection;
 import com.fbp.engine.core.ConnectionState;
-import com.fbp.engine.message.Message;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
