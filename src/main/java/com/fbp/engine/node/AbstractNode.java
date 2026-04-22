@@ -56,7 +56,7 @@ public abstract class AbstractNode implements Node {
 
     @Override
     public void process(Message message) {
-        log.info("[{}] processing message...", id);
+//        log.info("[{}] processing message...", id);
         onProcess(message);
     }
 

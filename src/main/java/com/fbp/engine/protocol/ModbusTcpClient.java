@@ -48,9 +48,14 @@ public class ModbusTcpClient {
         return socket != null && socket.isConnected() && !socket.isClosed();
     }
 
+    private int getNextTransactionId() {
+        transactionId = (transactionId + 1) % 65536;
+        return transactionId;
+    }
+
     // 읽기 요청 (FC 03: Read Holding Registers)
-    public int[] readHoldingRegisters(int unitId, int startAddress, int quantity) throws IOException, ModbusException {
-        int currentTxId = ++transactionId;
+    public synchronized int[] readHoldingRegisters(int unitId, int startAddress, int quantity) throws IOException, ModbusException {
+        int currentTxId = getNextTransactionId();
 
         out.write(buildMbapHeader(currentTxId, 6, unitId));
         out.writeByte(0x03);       // FC 03
@@ -78,8 +83,8 @@ public class ModbusTcpClient {
     }
 
     // 2. 쓰기 요청 (FC 06: Write Single Register)
-    public void writeSingleRegister(int unitId, int address, int value) throws IOException, ModbusException {
-        int currentTxId = ++transactionId;
+    public synchronized void writeSingleRegister(int unitId, int address, int value) throws IOException, ModbusException {
+        int currentTxId = getNextTransactionId();
 
         out.write(buildMbapHeader(currentTxId, 6, unitId));
         out.writeByte(0x06);
