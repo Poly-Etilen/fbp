@@ -23,7 +23,7 @@ public class CompositeRuleNode extends AbstractNode{
 
         addInputPort("in");
         addOutputPort("match");
-        addInputPort("mismatch");
+        addOutputPort("mismatch");
     }
 
     public CompositeRuleNode addCondition(Predicate<Message> condition) {

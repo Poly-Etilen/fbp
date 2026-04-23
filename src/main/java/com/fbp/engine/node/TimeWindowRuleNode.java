@@ -40,6 +40,7 @@ public class TimeWindowRuleNode extends AbstractNode{
             }
             if (events.size() >= threshold) {
                 log.debug("[{}] 타임 윈도우 알림 조건 충족! ({}ms 내 {}회 이상)", getId(), windowMs, threshold);
+                send("alert", message);
             } else {
                 send("pass", message);
             }
