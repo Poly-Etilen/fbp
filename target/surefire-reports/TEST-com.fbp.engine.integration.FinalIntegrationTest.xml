@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.fbp.engine.integration.FinalIntegrationTest" time="7.085" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="24"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/chosun-nhn22/fbp-engine/target/test-classes:/Users/chosun-nhn22/fbp-engine/target/classes:/Users/chosun-nhn22/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.0/junit-jupiter-api-5.11.0.jar:/Users/chosun-nhn22/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/chosun-nhn22/.m2/repository/org/junit/platform/junit-platform-commons/1.11.0/junit-platform-commons-1.11.0.jar:/Users/chosun-nhn22/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/chosun-nhn22/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.0/junit-jupiter-params-5.11.0.jar:/Users/chosun-nhn22/.m2/repository/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar:/Users/chosun-nhn22/.m2/repository/ch/qos/logback/logback-classic/1.5.32/logback-classic-1.5.32.jar:/Users/chosun-nhn22/.m2/repository/ch/qos/logback/logback-core/1.5.32/logback-core-1.5.32.jar:/Users/chosun-nhn22/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/chosun-nhn22/.m2/repository/org/eclipse/paho/org.eclipse.paho.mqttv5.client/1.2.5/org.eclipse.paho.mqttv5.client-1.2.5.jar:/Users/chosun-nhn22/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.0/jackson-databind-2.17.0.jar:/Users/chosun-nhn22/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.0/jackson-annotations-2.17.0.jar:/Users/chosun-nhn22/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.0/jackson-core-2.17.0.jar:/Users/chosun-nhn22/.m2/repository/net/bytebuddy/byte-buddy/1.14.9/byte-buddy-1.14.9.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="Asia/Seoul"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="24"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="KR"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/24.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/chosun-nhn22/fbp-engine/target/surefire/surefirebooter-20260423170912526_3.jar /Users/chosun-nhn22/fbp-engine/target/surefire 2026-04-23T17-09-12_467-jvmRun1 surefire-20260423170912526_1tmp surefire_0-20260423170912526_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/chosun-nhn22/fbp-engine/target/test-classes:/Users/chosun-nhn22/fbp-engine/target/classes:/Users/chosun-nhn22/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.0/junit-jupiter-api-5.11.0.jar:/Users/chosun-nhn22/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/chosun-nhn22/.m2/repository/org/junit/platform/junit-platform-commons/1.11.0/junit-platform-commons-1.11.0.jar:/Users/chosun-nhn22/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/chosun-nhn22/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.0/junit-jupiter-params-5.11.0.jar:/Users/chosun-nhn22/.m2/repository/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar:/Users/chosun-nhn22/.m2/repository/ch/qos/logback/logback-classic/1.5.32/logback-classic-1.5.32.jar:/Users/chosun-nhn22/.m2/repository/ch/qos/logback/logback-core/1.5.32/logback-core-1.5.32.jar:/Users/chosun-nhn22/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/chosun-nhn22/.m2/repository/org/eclipse/paho/org.eclipse.paho.mqttv5.client/1.2.5/org.eclipse.paho.mqttv5.client-1.2.5.jar:/Users/chosun-nhn22/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.0/jackson-databind-2.17.0.jar:/Users/chosun-nhn22/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.0/jackson-annotations-2.17.0.jar:/Users/chosun-nhn22/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.0/jackson-core-2.17.0.jar:/Users/chosun-nhn22/.m2/repository/net/bytebuddy/byte-buddy/1.14.9/byte-buddy-1.14.9.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/chosun-nhn22"/>
+    <property name="user.language" value="ko"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/24.0.2/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/chosun-nhn22/fbp-engine"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/chosun-nhn22/fbp-engine/target/surefire/surefirebooter-20260423170912526_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="24.0.2"/>
+    <property name="user.name" value="chosun-nhn22"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.3.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/chosun-nhn22/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/tj/g08c2scs3mx80_jj6gvy1b5w0000gn/T/"/>
+    <property name="java.version" value="24.0.2"/>
+    <property name="user.dir" value="/Users/chosun-nhn22/fbp-engine"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/chosun-nhn22/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="24.0.2"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="68.0"/>
+  </properties>
+  <testcase name="test1" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.032">
+    <system-out><![CDATA[17:09:13.478 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:13.494 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:13.496 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:13.496 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:13.496 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:13.508 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:13.517 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:13.527 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:13.538 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:13.548 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:13.557 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:13.567 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:13.577 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:13.588 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:13.597 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:13.608 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:13.618 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:13.628 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:13.638 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:13.646 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:13.658 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:13.667 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:13.677 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:13.686 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:13.698 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:13.707 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:13.716 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:13.726 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:13.738 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:13.747 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:13.758 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:13.768 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:13.776 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:13.786 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:13.798 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:13.807 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:13.818 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:13.828 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:13.837 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:13.847 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:13.858 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:13.867 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:13.876 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:13.887 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:13.896 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:13.907 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:13.916 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:13.928 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:13.937 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:13.948 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:13.956 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:13.967 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:13.978 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:13.987 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:13.997 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:14.007 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:14.018 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:14.027 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:14.037 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:14.048 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:14.057 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:14.066 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:14.078 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:14.087 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:14.098 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:14.107 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:14.118 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:14.128 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:14.138 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:14.148 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:14.158 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:14.167 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:14.178 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:14.186 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:14.198 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:14.207 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:14.218 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:14.228 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:14.238 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:14.248 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:14.258 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:14.267 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:14.278 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:14.288 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:14.298 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:14.308 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:14.318 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:14.327 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:14.336 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:14.347 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:14.358 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:14.366 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:14.378 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:14.387 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:14.397 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:14.407 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:14.418 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:14.428 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:14.438 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:14.448 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:14.458 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:14.468 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:14.477 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:14.487 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:14.498 [pool-12-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:14.502 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:14.502 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+  <testcase name="test2" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.009">
+    <system-out><![CDATA[17:09:14.509 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:14.510 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:14.511 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:14.511 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:14.511 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:14.522 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:14.533 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:14.542 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:14.552 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:14.562 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:14.572 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:14.582 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:14.592 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:14.602 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:14.612 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:14.622 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:14.632 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:14.642 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:14.652 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:14.662 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:14.671 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:14.681 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:14.691 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:14.703 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:14.712 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:14.721 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:14.733 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:14.742 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:14.752 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:14.761 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:14.773 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:14.781 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:14.792 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:14.802 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:14.811 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:14.823 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:14.832 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:14.841 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:14.851 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:14.863 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:14.872 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:14.882 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:14.892 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:14.902 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:14.912 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:14.922 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:14.931 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:14.943 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:14.952 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:14.961 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:14.972 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:14.982 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:14.993 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:15.002 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:15.011 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:15.023 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:15.031 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:15.041 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:15.053 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:15.062 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:15.072 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:15.081 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:15.093 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:15.102 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:15.113 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:15.121 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:15.133 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:15.141 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:15.153 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:15.161 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:15.173 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:15.182 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:15.192 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:15.202 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:15.212 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:15.221 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:15.231 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:15.243 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:15.252 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:15.262 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:15.272 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:15.282 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:15.292 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:15.301 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:15.313 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:15.321 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:15.333 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:15.342 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:15.352 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:15.362 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:15.372 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:15.382 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:15.392 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:15.401 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:15.413 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:15.422 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:15.432 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:15.442 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:15.453 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:15.462 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:15.472 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:15.482 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:15.492 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:15.502 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:15.513 [pool-14-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:15.516 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:15.517 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+  <testcase name="test3" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.008">
+    <system-out><![CDATA[17:09:15.518 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:15.518 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:15.518 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:15.519 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:15.519 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:15.531 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:15.540 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:15.550 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:15.560 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:15.570 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:15.580 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:15.589 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:15.598 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:15.611 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:15.620 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:15.630 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:15.640 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:15.650 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:15.660 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:15.670 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:15.680 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:15.690 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:15.700 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:15.709 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:15.721 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:15.730 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:15.740 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:15.750 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:15.760 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:15.770 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:15.781 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:15.790 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:15.800 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:15.810 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:15.820 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:15.831 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:15.840 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:15.850 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:15.860 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:15.869 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:15.881 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:15.890 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:15.900 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:15.910 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:15.920 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:15.930 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:15.940 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:15.950 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:15.960 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:15.970 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:15.981 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:15.990 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:16.000 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:16.010 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:16.020 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:16.030 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:16.040 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:16.050 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:16.059 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:16.069 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:16.081 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:16.090 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:16.100 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:16.110 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:16.120 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:16.130 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:16.140 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:16.150 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:16.161 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:16.169 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:16.181 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:16.190 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:16.200 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:16.210 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:16.219 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:16.231 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:16.240 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:16.250 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:16.260 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:16.270 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:16.279 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:16.291 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:16.300 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:16.309 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:16.321 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:16.330 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:16.340 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:16.350 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:16.360 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:16.370 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:16.380 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:16.390 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:16.401 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:16.410 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:16.420 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:16.431 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:16.439 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:16.451 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:16.460 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:16.470 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:16.481 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:16.490 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:16.499 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:16.509 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:16.519 [pool-16-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:16.524 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:16.524 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+  <testcase name="test4" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.011">
+    <system-out><![CDATA[17:09:16.527 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:16.529 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:16.529 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:16.529 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:16.530 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:16.541 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:16.549 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:16.561 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:16.571 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:16.581 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:16.590 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:16.601 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:16.611 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:16.621 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:16.631 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:16.641 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:16.650 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:16.661 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:16.671 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:16.681 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:16.691 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:16.701 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:16.711 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:16.721 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:16.731 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:16.742 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:16.749 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:16.761 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:16.770 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:16.781 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:16.791 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:16.801 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:16.811 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:16.821 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:16.831 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:16.841 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:16.850 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:16.861 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:16.870 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:16.881 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:16.890 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:16.901 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:16.911 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:16.921 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:16.929 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:16.941 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:16.951 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:16.959 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:16.971 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:16.981 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:16.989 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:17.001 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:17.010 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:17.021 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:17.031 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:17.041 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:17.051 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:17.059 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:17.071 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:17.081 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:17.091 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:17.101 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:17.111 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:17.121 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:17.131 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:17.141 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:17.151 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:17.160 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:17.169 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:17.179 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:17.189 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:17.199 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:17.211 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:17.221 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:17.231 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:17.241 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:17.251 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:17.261 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:17.271 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:17.281 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:17.289 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:17.300 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:17.311 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:17.321 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:17.331 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:17.341 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:17.349 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:17.361 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:17.370 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:17.381 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:17.391 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:17.401 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:17.411 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:17.420 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:17.431 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:17.441 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:17.451 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:17.460 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:17.470 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:17.481 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:17.489 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:17.499 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:17.509 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:17.521 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:17.531 [pool-18-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:17.536 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:17.536 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+  <testcase name="test5" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.011">
+    <system-out><![CDATA[17:09:17.539 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:17.540 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:17.540 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:17.541 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:17.541 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:17.553 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:17.562 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:17.572 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:17.582 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:17.591 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:17.602 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:17.610 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:17.621 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:17.632 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:17.642 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:17.652 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:17.661 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:17.671 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:17.682 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:17.692 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:17.701 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:17.713 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:17.722 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:17.732 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:17.742 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:17.752 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:17.762 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:17.772 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:17.782 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:17.792 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:17.802 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:17.811 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:17.822 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:17.832 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:17.842 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:17.852 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:17.862 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:17.872 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:17.882 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:17.891 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:17.901 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:17.912 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:17.921 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:17.932 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:17.942 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:17.952 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:17.962 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:17.972 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:17.981 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:17.992 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:18.002 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:18.012 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:18.022 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:18.032 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:18.042 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:18.052 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:18.062 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:18.072 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:18.082 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:18.091 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:18.102 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:18.110 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:18.122 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:18.132 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:18.142 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:18.152 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:18.160 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:18.173 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:18.182 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:18.191 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:18.202 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:18.212 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:18.222 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:18.232 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:18.242 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:18.252 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:18.262 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:18.272 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:18.282 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:18.292 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:18.300 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:18.313 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:18.322 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:18.332 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:18.342 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:18.352 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:18.362 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:18.372 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:18.382 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:18.392 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:18.402 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:18.410 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:18.423 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:18.432 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:18.442 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:18.452 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:18.462 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:18.472 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:18.482 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:18.490 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:18.503 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:18.512 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:18.520 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:18.533 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:18.542 [pool-20-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:18.546 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:18.546 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+  <testcase name="test6" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.004">
+    <system-out><![CDATA[17:09:18.551 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:18.551 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:18.552 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:18.552 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:18.552 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:18.563 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:18.573 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:18.583 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:18.593 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:18.603 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:18.612 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:18.622 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:18.632 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:18.643 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:18.654 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:18.663 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:18.674 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:18.683 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:18.692 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:18.704 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:18.713 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:18.723 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:18.733 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:18.743 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:18.752 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:18.763 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:18.773 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:18.783 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:18.793 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:18.804 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:18.813 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:18.823 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:18.833 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:18.843 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:18.853 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:18.864 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:18.873 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:18.883 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:18.893 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:18.903 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:18.913 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:18.923 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:18.933 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:18.944 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:18.953 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:18.963 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:18.972 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:18.984 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:18.992 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:19.004 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:19.013 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:19.023 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:19.033 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:19.043 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:19.054 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:19.062 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:19.074 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:19.083 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:19.094 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:19.103 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:19.114 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:19.123 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:19.133 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:19.143 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:19.154 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:19.162 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:19.174 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:19.183 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:19.193 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:19.203 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:19.213 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:19.223 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:19.234 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:19.243 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:19.253 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:19.263 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:19.274 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:19.283 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:19.294 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:19.303 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:19.313 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:19.323 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:19.333 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:19.343 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:19.353 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:19.363 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:19.374 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:19.383 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:19.394 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:19.402 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:19.412 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:19.424 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:19.433 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:19.443 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:19.453 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:19.462 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:19.473 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:19.483 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:19.493 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:19.504 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:19.513 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:19.524 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:19.533 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:19.543 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:19.553 [pool-22-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:19.553 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:19.553 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+  <testcase name="test7" classname="com.fbp.engine.integration.FinalIntegrationTest" time="1.006">
+    <system-out><![CDATA[17:09:19.555 [main] INFO com.fbp.engine.core.FlowEngine -- [Engine] Flow final-test를 등록됨
+17:09:19.555 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 시작 (주기: 10ms)
+17:09:19.555 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 0
+17:09:19.555 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 쓰기 준비 완료: test_final_normal_temp.txt
+17:09:19.555 [main] INFO com.fbp.engine.core.FlowEngine -- Engine] 플로우 'final-test' 시작됨
+17:09:19.567 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 1
+17:09:19.577 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 2
+17:09:19.587 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 3
+17:09:19.597 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 4
+17:09:19.607 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 5
+17:09:19.616 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 6
+17:09:19.626 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 7
+17:09:19.636 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 8
+17:09:19.647 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 9
+17:09:19.657 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 10
+17:09:19.667 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 11
+17:09:19.677 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 12
+17:09:19.687 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 13
+17:09:19.697 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 14
+17:09:19.706 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 15
+17:09:19.717 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 16
+17:09:19.727 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 17
+17:09:19.737 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 18
+17:09:19.747 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 19
+17:09:19.757 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 20
+17:09:19.767 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 21
+17:09:19.775 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 22
+17:09:19.787 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 23
+17:09:19.797 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 24
+17:09:19.807 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 25
+17:09:19.817 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 26
+17:09:19.827 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 27
+17:09:19.836 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 28
+17:09:19.847 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 29
+17:09:19.855 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 30
+17:09:19.866 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 31
+17:09:19.877 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 32
+17:09:19.887 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 33
+17:09:19.897 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 34
+17:09:19.907 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 35
+17:09:19.917 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 36
+17:09:19.927 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 37
+17:09:19.936 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 38
+17:09:19.947 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 39
+17:09:19.957 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 40
+17:09:19.967 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 41
+17:09:19.977 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 42
+17:09:19.987 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 43
+17:09:19.997 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 44
+17:09:20.007 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 45
+17:09:20.017 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 46
+17:09:20.027 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 47
+17:09:20.037 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 48
+17:09:20.047 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 49
+17:09:20.057 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 50
+17:09:20.067 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 51
+17:09:20.077 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 52
+17:09:20.087 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 53
+17:09:20.096 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 54
+17:09:20.107 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 55
+17:09:20.117 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 56
+17:09:20.127 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 57
+17:09:20.137 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 58
+17:09:20.145 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 59
+17:09:20.156 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 60
+17:09:20.165 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 61
+17:09:20.177 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 62
+17:09:20.187 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 63
+17:09:20.197 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 64
+17:09:20.207 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 65
+17:09:20.217 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 66
+17:09:20.227 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 67
+17:09:20.237 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 68
+17:09:20.247 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 69
+17:09:20.257 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 70
+17:09:20.266 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 71
+17:09:20.277 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 72
+17:09:20.287 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 73
+17:09:20.295 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 74
+17:09:20.307 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 75
+17:09:20.317 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 76
+17:09:20.327 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 77
+17:09:20.337 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 78
+17:09:20.347 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 79
+17:09:20.357 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 80
+17:09:20.367 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 81
+17:09:20.377 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 82
+17:09:20.386 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 83
+17:09:20.397 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 84
+17:09:20.407 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 85
+17:09:20.417 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 86
+17:09:20.426 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 87
+17:09:20.435 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 88
+17:09:20.447 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 89
+17:09:20.457 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 90
+17:09:20.467 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 91
+17:09:20.477 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 92
+17:09:20.486 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 93
+17:09:20.496 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 94
+17:09:20.507 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 95
+17:09:20.516 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 96
+17:09:20.527 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 97
+17:09:20.536 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 98
+17:09:20.547 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 99
+17:09:20.556 [pool-24-thread-1] DEBUG com.fbp.engine.node.TimerNode -- [timer] Timer 틱 발생: 100
+17:09:20.559 [main] INFO com.fbp.engine.node.TimerNode -- [timer] Timer 종료
+17:09:20.559 [main] INFO com.fbp.engine.node.FileWriterNode -- [file-writer] 파일 닫기 완료
+]]></system-out>
+  </testcase>
+</testsuite>

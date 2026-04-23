@@ -56,6 +56,10 @@ public class ModbusTcpSimulator {
                 }
             }
         }).start();
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {}
     }
 
     public void stop() {

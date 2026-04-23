@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.fbp.engine.integration.MqttModbusIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.158 s -- in com.fbp.engine.integration.MqttModbusIntegrationTest

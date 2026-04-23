@@ -13,7 +13,7 @@ class ModbusTcpClientIntegrationTest {
 
     private ModbusTcpSimulator simulator;
     private ModbusTcpClient client;
-    private static final int TEST_PORT = 5026;
+    private static final int TEST_PORT = 5028;
 
     @BeforeEach
     void setUp() throws IOException {
