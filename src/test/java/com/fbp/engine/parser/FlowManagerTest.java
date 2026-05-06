@@ -84,7 +84,7 @@ class FlowManagerTest {
         flowManager.deploy(createSampleDefinition("flow-A"));
         flowManager.deploy(createSampleDefinition("flow-B"));
 
-        Set<String> flowIds = flowManager.getDeployedFlowIds();
+        List<String> flowIds = flowManager.getDeployedFlowIds();
 
         assertEquals(2, flowIds.size());
         assertTrue(flowIds.contains("flow-A"));

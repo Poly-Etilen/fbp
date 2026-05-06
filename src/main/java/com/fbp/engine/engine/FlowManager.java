@@ -12,10 +12,7 @@ import com.fbp.engine.registry.NodeRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
@@ -70,8 +67,8 @@ public class FlowManager {
         return activeFlows.get(flowId);
     }
 
-    public Set<String> getDeployedFlowIds() {
-        return Collections.unmodifiableSet(activeFlows.keySet());
+    public List<String> getDeployedFlowIds() {
+        return new ArrayList<>(activeFlows.keySet());
     }
 
     public Flow.FlowState getFlowStatus(String flowId) {
