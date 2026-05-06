@@ -12,8 +12,10 @@ import com.fbp.engine.registry.NodeRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
@@ -29,10 +31,11 @@ public class FlowManager {
         }
         log.info("플로우 배포 시작: {} ({})",definition.getName(), definition.getId());
 
-        Map<String, Node> nodeInstance = new HashMap<>();
+        Flow flow = new Flow(definition.getId());
+
         for (NodeDefinition nodeDef : definition.getNodes()) {
             Node node = registry.create(nodeDef.getType(), nodeDef.getId(), nodeDef.getConfig());
-            nodeInstance.put(node.getId(), node);
+            flow.addNode((AbstractNode) node);
         }
 
         for (ConnectionDefinition connDef : definition.getConnections()) {
@@ -43,20 +46,52 @@ public class FlowManager {
                 throw new RuntimeException("잘못된 연결 방식임: " + connDef.getFrom() + " -> " + connDef.getTo());
             }
 
-            Node sourceNode = nodeInstance.get(fromParts[0]);
-            Node targetNode = nodeInstance.get(toPart[0]);
-
-            if (sourceNode == null || targetNode == null) {
-                throw new RuntimeException("연결할 노드를 찾을 수 없습니다.");
-            }
-            if (sourceNode instanceof AbstractNode && targetNode instanceof AbstractNode) {
-                AbstractNode outNode = (AbstractNode) sourceNode;
-                AbstractNode inNode = (AbstractNode) targetNode;
-
-                Connection conn = new Connection();
-                outNode.getOutputPort(fromParts[1]).connect(conn);
-                inNode.getInputPort(toPart[1]).connect(conn);
-            }
+            flow.connect(fromParts[0], fromParts[1], toPart[0], toPart[1]);
         }
+
+        flowEngine.register(flow);
+        flowEngine.startFlow(flow.getId());
+
+        activeFlows.put(flow.getId(), flow);
+    }
+
+    public void undeploy(String flowId) {
+        Flow flow = activeFlows.remove(flowId);
+        if (flow != null) {
+            flowEngine.stopFlow(flowId);
+        }
+    }
+
+    public Flow getFlow(String flowId) {
+        return activeFlows.get(flowId);
+    }
+
+    public Set<String> getDeployedFlowIds() {
+        return Collections.unmodifiableSet(activeFlows.keySet());
+    }
+
+    public Flow.FlowState getFlowStatus(String flowId) {
+        Flow flow = activeFlows.get(flowId);
+        return (flow != null) ? flow.getState() : null;
+    }
+
+    public void stopFlow(String flowId) {
+        if (activeFlows.containsKey(flowId)) {
+            flowEngine.stopFlow(flowId);
+            log.info("플로우 정지: {}", flowId);
+        }
+    }
+
+    public void restartFlow(String flowId) {
+        if (activeFlows.containsKey(flowId)) {
+            flowEngine.startFlow(flowId);
+            log.info("플로우 재시작: {}", flowId);
+        }
+    }
+
+    public void update(FlowDefinition newDefinition) {
+        log.info("플로우 업데이트 시작: {}", newDefinition.getId());
+        undeploy(newDefinition.getId()); // 기존 삭제
+        deploy(newDefinition);           // 새 정의로 배포
     }
 }
