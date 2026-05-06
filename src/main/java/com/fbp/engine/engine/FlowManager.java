@@ -56,6 +56,10 @@ public class FlowManager {
     }
 
     public void undeploy(String flowId) {
+        if (!activeFlows.containsKey(flowId)) {
+            throw new IllegalArgumentException("존재하지 않는 플로우 ID입니다: " + flowId);
+        }
+
         Flow flow = activeFlows.remove(flowId);
         if (flow != null) {
             flowEngine.stopFlow(flowId);
@@ -76,17 +80,19 @@ public class FlowManager {
     }
 
     public void stopFlow(String flowId) {
-        if (activeFlows.containsKey(flowId)) {
-            flowEngine.stopFlow(flowId);
-            log.info("플로우 정지: {}", flowId);
+        if (!activeFlows.containsKey(flowId)) {
+            throw new IllegalArgumentException("존재하지 않는 플로우 ID입니다: " + flowId);
         }
+        flowEngine.stopFlow(flowId);
+        log.info("플로우 정지: {}", flowId);
     }
 
     public void restartFlow(String flowId) {
-        if (activeFlows.containsKey(flowId)) {
-            flowEngine.startFlow(flowId);
-            log.info("플로우 재시작: {}", flowId);
+        if (!activeFlows.containsKey(flowId)) {
+            throw new IllegalArgumentException("존재하지 않는 플로우 ID입니다: " + flowId);
         }
+        flowEngine.startFlow(flowId);
+        log.info("플로우 재시작: {}", flowId);
     }
 
     public void update(FlowDefinition newDefinition) {
