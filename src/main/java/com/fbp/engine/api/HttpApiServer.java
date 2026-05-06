@@ -7,21 +7,22 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
 
 @Slf4j
 public class HttpApiServer {
     private final HttpServer server;
-    private final FlowManager flowManager;
-    private final MetricsCollector metricsCollector;
 
     public HttpApiServer(int port, FlowManager flowManager, MetricsCollector metricsCollector)  throws IOException {
         this.server = HttpServer.create(new InetSocketAddress(port), 0);
-        this.flowManager = flowManager;
-        this.metricsCollector = metricsCollector;
 
         server.createContext("/health", new HealthHandler(flowManager));
-        server.setExecutor(Executors.newFixedThreadPool(5));
+        server.createContext("/flows", new FlowHandler(flowManager));
+
+        MetricsHandler metricsHandler = new MetricsHandler(metricsCollector);
+        server.createContext("/flows/", metricsHandler);
+        server.createContext("/nodes/", metricsHandler);
+
+        server.setExecutor(null);
     }
 
     public void start() {

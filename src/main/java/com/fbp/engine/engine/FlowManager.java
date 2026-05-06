@@ -94,7 +94,23 @@ public class FlowManager {
 
     public void update(FlowDefinition newDefinition) {
         log.info("플로우 업데이트 시작: {}", newDefinition.getId());
-        undeploy(newDefinition.getId()); // 기존 삭제
-        deploy(newDefinition);           // 새 정의로 배포
+        undeploy(newDefinition.getId());
+        deploy(newDefinition);
+    }
+
+    public Collection<Flow> getAllFlows() {
+        return activeFlows.values();
+    }
+
+    public void remove(String flowId) {
+        log.info("플로우 제거 요청: {}", flowId);
+        undeploy(flowId);
+    }
+
+    public Map<String, Object> getEngineStats() {
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("flowCount", activeFlows.size());
+        stats.put("deployedFlowIds", getDeployedFlowIds());
+        return stats;
     }
 }
