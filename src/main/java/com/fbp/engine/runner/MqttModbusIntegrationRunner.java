@@ -41,7 +41,7 @@ public class MqttModbusIntegrationRunner {
                     "valueField", "fanCommand"
             ));
 
-            Flow flow = new Flow("mqtt-modbus-flow");
+            Flow flow = new Flow("mqtt-modbus-flow", "");
             flow.addNode(mqttSub)
                     .addNode(ruleNode)
                     .addNode(logNode)

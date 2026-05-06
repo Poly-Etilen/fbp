@@ -21,6 +21,7 @@ public class FlowManager {
     private final NodeRegistry registry;
     private final FlowEngine flowEngine;
     private final Map<String, Flow> activeFlows = new ConcurrentHashMap<>();
+    private final Map<String, FlowDefinition> flowDefinitions = new ConcurrentHashMap<>();
 
     public void deploy(FlowDefinition definition) {
         if (activeFlows.containsKey(definition.getId())) {
@@ -28,7 +29,7 @@ public class FlowManager {
         }
         log.info("플로우 배포 시작: {} ({})",definition.getName(), definition.getId());
 
-        Flow flow = new Flow(definition.getId());
+        Flow flow = new Flow(definition.getId(), definition.getName());
 
         for (NodeDefinition nodeDef : definition.getNodes()) {
             Node node = registry.create(nodeDef.getType(), nodeDef.getId(), nodeDef.getConfig());
@@ -74,6 +75,10 @@ public class FlowManager {
     public Flow.FlowState getFlowStatus(String flowId) {
         Flow flow = activeFlows.get(flowId);
         return (flow != null) ? flow.getState() : null;
+    }
+
+    public FlowDefinition getDefinition(String flowId) {
+        return flowDefinitions.get(flowId);
     }
 
     public void stopFlow(String flowId) {

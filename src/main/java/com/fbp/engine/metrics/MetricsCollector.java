@@ -32,6 +32,10 @@ public class MetricsCollector {
         nodeMetricsMap.clear();
     }
 
+    public NodeMetrics getNodeMetrics(String nodeId) {
+        return nodeMetricsMap.get(nodeId);
+    }
+
     public FlowMetrics createFlowMetrics(FlowDefinition definition) {
         List<FlowMetrics.NodeMetricsSnapshot> snapshots = new ArrayList<>();
         long totalProcessed = 0;

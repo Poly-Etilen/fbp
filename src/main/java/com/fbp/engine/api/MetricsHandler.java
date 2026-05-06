@@ -1,6 +1,8 @@
 package com.fbp.engine.api;
 
+import com.fbp.engine.engine.FlowManager;
 import com.fbp.engine.metrics.MetricsCollector;
+import com.fbp.engine.parser.FlowDefinition;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class MetricsHandler implements HttpHandler {
     private final MetricsCollector metricsCollector;
+    private final FlowManager flowManager;
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -38,9 +41,10 @@ public class MetricsHandler implements HttpHandler {
         String[] parts = path.split("/");
         if (parts.length == 4) {
             String flowId = parts[2];
-            Object metrics = metricsCollector.getFlowMetrics(flowId);
+            FlowDefinition definition = flowManager.getDefinition(flowId);
 
-            if (metrics != null) {
+            if (definition != null) {
+                Object metrics = metricsCollector.createFlowMetrics(definition);
                 ApiResponse.send(exchange, 200, metrics);
             } else {
                 ApiResponse.sendError(exchange, 404, "지정된 플로우 메트릭을 찾을 수 없습니다: " + flowId);

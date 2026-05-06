@@ -9,6 +9,7 @@ import java.util.*;
 @Getter
 public class Flow {
     private final String id;
+    private final String name;
     private final Map<String, AbstractNode> nodes = new LinkedHashMap<>();
     private final List<FlowConnection> connections = new ArrayList<>();
 
@@ -32,8 +33,9 @@ public class Flow {
         }
     }
 
-    public Flow(String id) {
+    public Flow(String id, String name) {
         this.id = id;
+        this.name = name;
     }
 
     public Flow addNode(AbstractNode node) {
