@@ -60,5 +60,11 @@ public abstract class AbstractNode implements Node {
         onProcess(message);
     }
 
+    public int getInputQueueSize() {
+        return inputPorts.values().stream()
+                .mapToInt(InputPort::getQueueSize)
+                .sum();
+    }
+
     protected abstract void onProcess(Message message);
 }
