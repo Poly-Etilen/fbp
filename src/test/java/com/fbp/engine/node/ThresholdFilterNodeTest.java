@@ -24,7 +24,7 @@ class ThresholdFilterNodeTest {
     }
 
     private FilterConnections setupFilterAndGetConnections(ThresholdFilterNode filter) {
-        Flow flow = new Flow("test-flow")
+        Flow flow = new Flow("test-flow", "테스트 플로우")
                 .addNode(filter)
                 .addNode(new MockTargetNode("target-alert"))
                 .addNode(new MockTargetNode("target-normal"))

@@ -43,7 +43,7 @@ public class ModbusControlFlowRunner {
             );
             ModbusWriterNode writer = new ModbusWriterNode("writer", writerConfig);
 
-            Flow flow = new Flow("auto-control-flow");
+            Flow flow = new Flow("auto-control-flow", "자동 제어 플로우");
             flow.addNode(timer).addNode(reader).addNode(mapper).addNode(filter).addNode(writer);
             flow.connect("timer", "out", "reader", "trigger")
                 .connect("reader", "out", "mapper", "in")

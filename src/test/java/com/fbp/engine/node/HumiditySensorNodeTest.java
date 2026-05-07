@@ -20,12 +20,12 @@ class HumiditySensorNodeTest {
     }
 
     private Connection setupSensorAndGetConnection(HumiditySensorNode sensor) {
-        Flow flow = new Flow("test-flow")
+        Flow flow = new Flow("test-flow", "테스트 플로우")
                 .addNode(sensor)
                 .addNode(new MockTargetNode("target"))
                 .connect(sensor.getId(), "out", "target", "in");
 
-        return flow.getConnections().get(0).getConnection();
+        return flow.getConnections().getFirst().getConnection();
     }
 
     @Test

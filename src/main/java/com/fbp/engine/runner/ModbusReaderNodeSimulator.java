@@ -34,7 +34,7 @@ public class ModbusReaderNodeSimulator {
 
             PrintNode printNode = new PrintNode("printer");
 
-            Flow flow = new Flow("flow");
+            Flow flow = new Flow("flow", "플로우");
             flow.addNode(timerNode);
             flow.addNode(readerNode);
             flow.addNode(printNode);

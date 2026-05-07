@@ -16,11 +16,9 @@ public class HttpApiServer {
         this.server = HttpServer.create(new InetSocketAddress(port), 0);
 
         server.createContext("/health", new HealthHandler(flowManager));
-        server.createContext("/flows", new FlowHandler(flowManager));
+        server.createContext("/flows", new FlowHandler(flowManager, metricsCollector));
 
-        MetricsHandler metricsHandler = new MetricsHandler(metricsCollector);
-        server.createContext("/flows/", metricsHandler);
-        server.createContext("/nodes/", metricsHandler);
+        server.createContext("/nodes/", new MetricsHandler(metricsCollector, flowManager));
 
         server.setExecutor(null);
     }

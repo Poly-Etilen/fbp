@@ -15,7 +15,7 @@ public class App {
     public static void main(String[] args) throws InterruptedException{
         FlowEngine engine = new FlowEngine();
 
-        Flow flow = new Flow("final-scenario")
+        Flow flow = new Flow("final-scenario", "라스트 시나리오")
                 .addNode(new TimerNode("timer", 10000))
                 .addNode(new TemperatureSensorNode("sensor", 15.0, 45.0))
                 .addNode(new ThresholdFilterNode("filter", "temperature", 30.0))

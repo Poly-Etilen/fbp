@@ -14,7 +14,7 @@ class FlowEngineTest {
         @Override protected void onProcess(Message msg) {}
     }
     private Flow createValidFlow(String id) {
-        return new Flow(id).addNode(new MockNode(id + "-node"));
+        return new Flow(id, id).addNode(new MockNode(id + "-node"));
     }
     @Test
     @DisplayName("초기 상태")
@@ -54,7 +54,7 @@ class FlowEngineTest {
     @DisplayName("startFlow - 유효성 실패")
     void test5() {
         FlowEngine engine = new FlowEngine();
-        engine.register(new Flow("empty-flow"));
+        engine.register(new Flow("empty-flow", "empty-flow"));
 
         Assertions.assertThrows(IllegalStateException.class, () -> engine.startFlow("empty-flow"));
     }

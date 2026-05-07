@@ -27,7 +27,7 @@ class FinalIntegrationTest {
         normalCollector = new CollectorNode("normal-collector");
         totalCollector = new CollectorNode("total-collector");
 
-        Flow flow = new Flow("final-test")
+        Flow flow = new Flow("final-test", "최종 테스트")
                 .addNode(new TimerNode("timer", 10))
                 .addNode(new TemperatureSensorNode("sensor", 15.0, 45.0))
                 .addNode(new ThresholdFilterNode("filter", "temperature", 30.0))
@@ -70,6 +70,7 @@ class FinalIntegrationTest {
 
         engine.startFlow("final-test");
         Thread.sleep(1000);
+        Thread.sleep(100);
         engine.shutdown();
         workers.forEach(Thread::interrupt);
     }

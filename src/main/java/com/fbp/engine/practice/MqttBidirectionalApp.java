@@ -30,7 +30,7 @@ public class MqttBidirectionalApp {
         pubConfig.put("clientId", "test2-pub-client");
         pubConfig.put("topic", "alert/temp");
 
-        Flow flow = new Flow("mqtt-bidirectional-flow")
+        Flow flow = new Flow("mqtt-bidirectional-flow", "mqtt 양방향 플로우")
                 .addNode(new MqttSubscriberNode("sub", subConfig))
                 .addNode(new ThresholdFilterNode("filter", "temperature", 30.0))
                 .addNode(new MqttPublisherNode("pub", pubConfig))

@@ -2,6 +2,7 @@ package com.fbp.engine.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fbp.engine.engine.FlowManager;
+import com.fbp.engine.metrics.MetricsCollector;
 import com.fbp.engine.parser.FlowDefinition;
 import com.fbp.engine.parser.JsonFlowParser;
 import com.sun.net.httpserver.HttpExchange;
@@ -20,10 +21,12 @@ import java.util.Map;
 public class FlowHandler implements HttpHandler {
     private final FlowManager flowManager;
     private final JsonFlowParser flowParser;
+    private final MetricsCollector metricsCollector;
 
-    public FlowHandler(FlowManager flowManager) {
+    public FlowHandler(FlowManager flowManager, MetricsCollector metricsCollector) {
         this.flowManager = flowManager;
         this.flowParser = new JsonFlowParser();
+        this.metricsCollector = metricsCollector;
     }
 
     @Override
@@ -32,8 +35,14 @@ public class FlowHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
 
         try {
-            if (method.equalsIgnoreCase("GET") && path.equals("/flows")) {
-                handleGet(exchange);
+            if (method.equalsIgnoreCase("GET")) {
+                if (path.equals("/flows")) {
+                    handleGet(exchange);
+                } else if (path.startsWith("/flows/") && path.endsWith("/metrics")) {
+                    handleFlowMetrics(exchange, path);
+                } else {
+                    ApiResponse.sendError(exchange, 404, "경로를 찾을 수 없습니다.");
+                }
             } else if (method.equals("POST") && path.equals("/flows")) {
                 handlePost(exchange);
             } else if (method.equals("DELETE") && path.startsWith("/flows/")) {
@@ -56,6 +65,19 @@ public class FlowHandler implements HttpHandler {
                     return dto;
                 }).toList();
         ApiResponse.send(exchange, 200, flowList);
+    }
+
+    private void handleFlowMetrics(HttpExchange exchange, String path) throws IOException {
+        String[] parts = path.split("/");
+        if (parts.length == 4) {
+            String flowId = parts[2];
+            FlowDefinition definition = flowManager.getDefinition(flowId);
+            if (definition != null) {
+                ApiResponse.send(exchange, 200, metricsCollector.createFlowMetrics(definition));
+            } else {
+                ApiResponse.sendError(exchange, 404, "플로우를 찾을 수 없습니다: " + flowId);
+            }
+        }
     }
 
     private void handlePost(HttpExchange exchange) throws IOException {

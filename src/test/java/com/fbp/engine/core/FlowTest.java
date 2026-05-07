@@ -15,7 +15,7 @@ class FlowTest {
     @Test
     @DisplayName("노드 등록")
     void test1() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new PrintNode("p1"));
         Assertions.assertTrue(flow.getNodes().containsKey("p1"));
     }
@@ -23,7 +23,7 @@ class FlowTest {
     @Test
     @DisplayName("메서드 체이닝")
     void test2() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         Assertions.assertDoesNotThrow(() -> flow.addNode(new TimerNode("t1", 100))
                 .addNode(new PrintNode("p1"))
                 .connect("t1","out","p1","in"));
@@ -32,7 +32,7 @@ class FlowTest {
     @Test
     @DisplayName("정상 연결")
     void test3() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new TimerNode("t1", 100)).addNode(new PrintNode("p1"));
         Assertions.assertEquals(0, flow.getConnections().size());
 
@@ -44,7 +44,7 @@ class FlowTest {
     @Test
     @DisplayName("존재하지 않는 소스 노드 ID")
     void test4() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new PrintNode("p1"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> flow.connect("wrong-source","out","p1","in"));
     }
@@ -52,7 +52,7 @@ class FlowTest {
     @Test
     @DisplayName("존재하지 않는 대상 노드 ID")
     void test5() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new PrintNode("p1"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> flow.connect("f1","out","wrong-target","in"));
     }
@@ -60,7 +60,7 @@ class FlowTest {
     @Test
     @DisplayName("존재하지 않는 소스 포트")
     void test6() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new PrintNode("p1"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> flow.connect("f1","wrong-port","p1","in"));
     }
@@ -68,7 +68,7 @@ class FlowTest {
     @Test
     @DisplayName("존재하지 않는 대상 포트")
     void test7() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new PrintNode("p1"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> flow.connect("f1","out","p1","wrong-port"));
     }
@@ -76,7 +76,7 @@ class FlowTest {
     @Test
     @DisplayName("validate — 빈 Flow")
     void test8() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         List<String> errors = flow.validate();
 
         Assertions.assertFalse(errors.isEmpty());
@@ -86,7 +86,7 @@ class FlowTest {
     @Test
     @DisplayName("validate — 정상 Flow")
     void test9() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new TimerNode("t1", 100))
                 .addNode(new PrintNode("p1"))
                 .connect("t1","out","p1","in");
@@ -109,7 +109,7 @@ class FlowTest {
     @Test
     @DisplayName("initialize — 전체 호출")
     void test10() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         MockNode n1 = new MockNode("n1");
         MockNode n2 = new MockNode("n2");
         flow.addNode(n1).addNode(n2);
@@ -120,7 +120,7 @@ class FlowTest {
     @Test
     @DisplayName("shutdown — 전체 호출")
     void test11() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         MockNode n1 = new MockNode("n1");
         flow.addNode(n1);
         flow.shutdown();
@@ -129,7 +129,7 @@ class FlowTest {
     @Test
     @DisplayName("순환 참조 탐지")
     void test12() {
-        Flow flow = new Flow("f1");
+        Flow flow = new Flow("f1", "f1");
         flow.addNode(new TransformNode("A", msg -> msg))
                 .addNode(new TransformNode("B", msg -> msg))
                 .addNode(new TransformNode("C", msg -> msg));

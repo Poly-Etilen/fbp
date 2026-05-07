@@ -55,7 +55,7 @@ public class CollectorNodeTest {
         TemperatureSensorNode sensor = new TemperatureSensorNode("sensor", 10.0, 20.0);
         CollectorNode collector = new CollectorNode("collector");
 
-        Flow flow = new Flow("test-flow")
+        Flow flow = new Flow("test-flow", "테스트 플로우")
                 .addNode(sensor)
                 .addNode(collector)
                 .connect("sensor", "out", "collector", "in");

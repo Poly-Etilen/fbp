@@ -18,7 +18,7 @@ class GeneratorNodeTest {
     }
 
     private Connection setupGeneratorAndGetConnection(AbstractNode generator) {
-        Flow flow = new Flow("test-flow")
+        Flow flow = new Flow("test-flow", "테스트 플로우")
                 .addNode(generator)
                 .addNode(new MockTargetNode("target"))
                 .connect(generator.getId(), "out", "target", "in");

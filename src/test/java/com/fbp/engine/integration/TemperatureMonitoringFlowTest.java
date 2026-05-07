@@ -45,7 +45,7 @@ public class TemperatureMonitoringFlowTest {
         CollectorNode alertCollector = new CollectorNode("alert-collector");
         CollectorNode normalCollector = new CollectorNode("normal-collector");
 
-        Flow flow = new Flow("integrated-test")
+        Flow flow = new Flow("integrated-test", "통합 테스트")
                 .addNode(new TimerNode("timer", 10))
                 .addNode(new TemperatureSensorNode("sensor", 15.0, 45.0))
                 .addNode(new ThresholdFilterNode("filter", "temperature", 30.0))

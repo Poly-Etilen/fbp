@@ -24,7 +24,7 @@ public class MqttSubscriberApp {
         MqttSubscriberNode mqttNode = new MqttSubscriberNode("MQTT-IN", mqttConfig);
         PrintNode printer = new PrintNode("PRINT-OUT");
 
-        Flow flow = new Flow("mqtt-test-flow");
+        Flow flow = new Flow("mqtt-test-flow", "mqtt 테스트 플로우");
         flow.addNode(mqttNode)
                 .addNode(printer)
                 .connect("MQTT-IN", "out", "PRINT-OUT", "in");

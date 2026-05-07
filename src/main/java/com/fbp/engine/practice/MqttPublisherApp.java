@@ -24,7 +24,7 @@ public class MqttPublisherApp {
         GeneratorNode generatorNode = new GeneratorNode("GEN-IN");
         MqttPublisherNode publisherNode = new MqttPublisherNode("MQTT-OUT", config);
 
-        Flow flow = new Flow("mqtt-pub-flow");
+        Flow flow = new Flow("mqtt-pub-flow", "mqtt 발행 플로우");
 
         flow.addNode(generatorNode)
                 .addNode(publisherNode)
