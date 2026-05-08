@@ -74,7 +74,7 @@ public class MqttBridgeConnection implements Connection {
                                 strategy.handleFull(internalQueue, msg);
                             }
                         } else {
-                            internalQueue.put(msg);
+                            internalQueue.offer(msg);
                         }
                     } catch (Exception e) {
                         System.err.println("[MqttBridge] 메시지 처리 실패: " + e.getMessage());
