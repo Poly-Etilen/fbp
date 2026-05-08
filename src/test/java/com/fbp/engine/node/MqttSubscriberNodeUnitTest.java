@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.eclipse.paho.mqttv5.client.MqttClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
@@ -92,7 +93,7 @@ class MqttSubscriberNodeUnitTest {
         @BeforeEach
         void setUpIntegration() throws Exception {
             collectorNode = new CollectorNode("test-collector");
-            connection = new Connection();
+            connection = new LocalConnection();
             node.getOutputPort("out").connect(connection);
 
             // MqttSubscriberNode 초기화 (Broker 연결)

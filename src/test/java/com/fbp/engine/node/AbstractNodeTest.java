@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -63,7 +64,7 @@ class AbstractNodeTest {
         Dummy node = new Dummy("node-1");
         node.triggerAddOutputPort("out");
 
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         node.getOutputPort("out").connect(conn);
 
         Message msg = new Message(Map.of("data", "hello"));

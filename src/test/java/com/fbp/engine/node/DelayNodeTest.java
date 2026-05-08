@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ class DelayNodeTest {
     @DisplayName("지연 후 전달")
     void test1() throws InterruptedException {
         DelayNode node = new DelayNode("d1", 500);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         node.getOutputPort("out").connect(connection);
 
         long startTime = System.currentTimeMillis();
@@ -28,7 +29,7 @@ class DelayNodeTest {
     @DisplayName("메시지 내용 보존")
     void test2() throws InterruptedException {
         DelayNode node = new DelayNode("d1", 100);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         node.getOutputPort("out").connect(connection);
 
         Message originalMsg = new Message(Map.of("data", "테스트"));

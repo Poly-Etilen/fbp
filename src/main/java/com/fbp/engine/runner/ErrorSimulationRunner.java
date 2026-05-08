@@ -1,6 +1,7 @@
 package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.*;
 import com.fbp.engine.protocol.ModbusTcpSimulator;
@@ -43,10 +44,10 @@ public class ErrorSimulationRunner {
         LogNode errorLogNode = new LogNode("log-error-dlq");
         LogNode normalLogNode = new LogNode("log-normal");
 
-        Connection subToLog = new Connection();
-        Connection timerToReader = new Connection();
-        Connection readerToNormalLog = new Connection();
-        Connection readerToErrorLog = new Connection();
+        Connection subToLog = new LocalConnection();
+        Connection timerToReader = new LocalConnection();
+        Connection readerToNormalLog = new LocalConnection();
+        Connection readerToErrorLog = new LocalConnection();
 
         subNode.getOutputPort("out").connect(subToLog);
         timerNode.getOutputPort("out").connect(timerToReader);

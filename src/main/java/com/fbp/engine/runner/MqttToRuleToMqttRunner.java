@@ -1,6 +1,7 @@
 package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.*;
 import lombok.extern.slf4j.Slf4j;
@@ -38,10 +39,10 @@ public class MqttToRuleToMqttRunner {
 
         LogNode logNode = new LogNode("log-normal");
 
-        Connection subToRule = new Connection();
-        Connection ruleToTransform = new Connection();
-        Connection transformToPub = new Connection();
-        Connection ruleToLog = new Connection();
+        Connection subToRule = new LocalConnection();
+        Connection ruleToTransform = new LocalConnection();
+        Connection transformToPub = new LocalConnection();
+        Connection ruleToLog = new LocalConnection();
 
         subNode.getOutputPort("out").connect(subToRule);
         ruleNode.getOutputPort("match").connect(ruleToTransform);

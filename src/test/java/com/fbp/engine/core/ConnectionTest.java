@@ -11,7 +11,7 @@ class ConnectionTest {
     @Test
     @DisplayName("deliver 후 target 수신")
     void test1() throws InterruptedException{
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
 
         Message msg = new Message(Map.of("data", 1));
         conn.deliver(msg);
@@ -24,7 +24,7 @@ class ConnectionTest {
     @Test
     @DisplayName("target 미설정 시 동작")
     void test2() {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         Message msg = new Message(Map.of("data", 1));
         Assertions.assertDoesNotThrow(() -> conn.deliver(msg));
     }
@@ -32,7 +32,7 @@ class ConnectionTest {
     @Test
     @DisplayName("버퍼 크기 확인")
     void test3() {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         conn.deliver(new Message(Map.of("data", 1)));
         conn.deliver(new Message(Map.of("data", 2)));
 
@@ -42,7 +42,7 @@ class ConnectionTest {
     @Test
     @DisplayName("다수 메시지 순서 보장")
     void test4() throws InterruptedException {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
 
         conn.deliver(new Message(Map.of("seq", 1)));
         conn.deliver(new Message(Map.of("seq", 2)));

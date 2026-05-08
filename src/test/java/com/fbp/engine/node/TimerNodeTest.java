@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +12,7 @@ class TimerNodeTest {
     @DisplayName("initialize 후 메시지 생성")
     void test1() throws InterruptedException {
         TimerNode timer = new TimerNode("timer-1", 100);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         timer.getOutputPort("out").connect(connection);
 
         timer.initialize();
@@ -26,7 +27,7 @@ class TimerNodeTest {
     @DisplayName("tick 증가")
     void test2() throws InterruptedException {
         TimerNode timer = new TimerNode("timer-1", 100);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         timer.getOutputPort("out").connect(connection);
 
         timer.initialize();
@@ -47,7 +48,7 @@ class TimerNodeTest {
     @DisplayName("shutdown 후 정지")
     void test3() throws InterruptedException {
         TimerNode timer = new TimerNode("timer-1", 100);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         timer.getOutputPort("out").connect(connection);
 
         timer.initialize();
@@ -64,7 +65,7 @@ class TimerNodeTest {
     @DisplayName("주기 확인")
     void test4() throws InterruptedException {
         TimerNode timer = new TimerNode("timer-1", 500);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         timer.getOutputPort("out").connect(connection);
 
         timer.initialize();

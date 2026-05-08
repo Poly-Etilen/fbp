@@ -15,7 +15,7 @@ class BlockingQueueConnectionTest {
     @Test
     @DisplayName("deliver-poll 기본 동작")
     void test1() throws InterruptedException {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         Message msg = new Message(Map.of("id", "A"));
 
         conn.deliver(msg);
@@ -25,7 +25,7 @@ class BlockingQueueConnectionTest {
     @Test
     @DisplayName("메시지 순서 보장")
     void test2() throws InterruptedException {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         conn.deliver(new Message(Map.of("seq", 1)));
         conn.deliver(new Message(Map.of("seq", 2)));
         conn.deliver(new Message(Map.of("seq", 3)));
@@ -38,7 +38,7 @@ class BlockingQueueConnectionTest {
     @Test
     @DisplayName("멀티스레드 deliver-poll")
     void test3() throws InterruptedException {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         CountDownLatch latch = new CountDownLatch(1);
         Message msg = new Message(Map.of("data", "test"));
 
@@ -57,7 +57,7 @@ class BlockingQueueConnectionTest {
     @Test
     @DisplayName("poll 대기 동작")
     void test4() {
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         Assertions.assertThrows(AssertionFailedError.class, () -> {
             Assertions.assertTimeoutPreemptively(Duration.ofMillis(100), () -> conn.poll());
         });
@@ -66,7 +66,7 @@ class BlockingQueueConnectionTest {
     @Test
     @DisplayName("버퍼 크기 제한")
     void test5() throws InterruptedException {
-        Connection conn = new Connection(2, null);
+        Connection conn = new LocalConnection(2, null);
         conn.deliver(new Message(Map.of("id", 1)));
         conn.deliver(new Message(Map.of("id", 2)));
 

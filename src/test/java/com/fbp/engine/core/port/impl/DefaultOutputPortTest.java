@@ -1,6 +1,7 @@
 package com.fbp.engine.core.port.impl;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ class DefaultOutputPortTest {
     @DisplayName("단일 Connection 전달")
     void test1() {
         DefaultOutputPort out = new DefaultOutputPort("out");
-        Connection conn1 = new Connection();
+        Connection conn1 = new LocalConnection();
         out.connect(conn1);
 
         out.send(new Message(Map.of("hello", "world")));
@@ -24,8 +25,8 @@ class DefaultOutputPortTest {
     @DisplayName("다중 Connection 전달 (1:N)")
     void test2() {
         DefaultOutputPort out = new DefaultOutputPort("out");
-        Connection conn1 = new Connection();
-        Connection conn2 = new Connection();
+        Connection conn1 = new LocalConnection();
+        Connection conn2 = new LocalConnection();
         out.connect(conn1);
         out.connect(conn2);
 

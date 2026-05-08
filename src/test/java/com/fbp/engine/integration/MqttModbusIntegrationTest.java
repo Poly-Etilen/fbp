@@ -1,6 +1,7 @@
 package com.fbp.engine.integration;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.ModbusWriterNode;
 import com.fbp.engine.node.MqttPublisherNode;
@@ -110,10 +111,10 @@ class MqttModbusIntegrationTest {
         );
         publisherNode = new MqttPublisherNode("mqtt-pub", pubConfig);
 
-        subToRuleConn = new Connection();
-        ruleToModbusConn = new Connection();
-        ruleToMqttConn = new Connection();
-        ruleMismatchConn = new Connection();
+        subToRuleConn = new LocalConnection();
+        ruleToModbusConn = new LocalConnection();
+        ruleToMqttConn = new LocalConnection();
+        ruleMismatchConn = new LocalConnection();
 
         subscriberNode.getOutputPort("out").connect(subToRuleConn);
 

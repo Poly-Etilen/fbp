@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.eclipse.paho.mqttv5.client.*;
 import org.eclipse.paho.mqttv5.common.MqttException;
@@ -80,8 +81,8 @@ class MqttIntegrationTest {
             return new Message(payload);
         });
 
-        Connection subToTransform = new Connection();
-        Connection transformToPub = new Connection();
+        Connection subToTransform = new LocalConnection();
+        Connection transformToPub = new LocalConnection();
 
         subNode.getOutputPort("out").connect(subToTransform);
         removeTopicNode.getOutputPort("out").connect(transformToPub);
@@ -120,7 +121,7 @@ class MqttIntegrationTest {
         MqttSubscriberNode subNode = new MqttSubscriberNode("sub-wildcard", Map.of(
                 "brokerUrl", BROKER_URL, "clientId", "sub-client-wildcard", "topic", "sensor/+"
         ));
-        Connection outConn = new Connection();
+        Connection outConn = new LocalConnection();
         subNode.getOutputPort("out").connect(outConn);
         subNode.initialize();
         Thread.sleep(500);
@@ -149,7 +150,7 @@ class MqttIntegrationTest {
         MqttSubscriberNode subNode = new MqttSubscriberNode("sub-qos1", Map.of(
                 "brokerUrl", BROKER_URL, "clientId", "sub-client-qos", "topic", "test/qos", "qos", 1
         ));
-        Connection outConn = new Connection();
+        Connection outConn = new LocalConnection();
         subNode.getOutputPort("out").connect(outConn);
         subNode.initialize();
         Thread.sleep(500);
@@ -172,7 +173,7 @@ class MqttIntegrationTest {
                 "clientId", "sub-client-reconnect",
                 "topic", "test/reconnect"
         ));
-        Connection outConn = new Connection();
+        Connection outConn = new LocalConnection();
         subNode.getOutputPort("out").connect(outConn);
         subNode.initialize();
         Thread.sleep(500);

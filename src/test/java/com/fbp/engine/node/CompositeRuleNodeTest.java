@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.CompositeRuleNode;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,8 +29,8 @@ class CompositeRuleNodeTest {
 
     @BeforeEach
     void setUp() {
-        matchConnection = new Connection();
-        mismatchConnection = new Connection();
+        matchConnection = new LocalConnection();
+        mismatchConnection = new LocalConnection();
     }
 
     /**

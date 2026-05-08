@@ -1,6 +1,7 @@
 package com.fbp.engine.integration;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.*;
 import com.fbp.engine.protocol.ModbusTcpSimulator;
@@ -106,9 +107,9 @@ class CrossProtocolIntegrationTest {
                 "scale", 1.0
         ));
 
-        Connection subToRule = new Connection();
-        Connection ruleToTransform = new Connection();
-        Connection transformToWriter = new Connection();
+        Connection subToRule = new LocalConnection();
+        Connection ruleToTransform = new LocalConnection();
+        Connection transformToWriter = new LocalConnection();
 
         subNode.getOutputPort("out").connect(subToRule);
         ruleNode.getOutputPort("match").connect(ruleToTransform);
@@ -173,9 +174,9 @@ class CrossProtocolIntegrationTest {
                 "topic", "alert/high_temp"
         ));
 
-        Connection readerToParse = new Connection();
-        Connection parseToRule = new Connection();
-        Connection ruleToPub = new Connection();
+        Connection readerToParse = new LocalConnection();
+        Connection parseToRule = new LocalConnection();
+        Connection ruleToPub = new LocalConnection();
 
         readerNode.getOutputPort("out").connect(readerToParse);
         parseNode.getOutputPort("out").connect(parseToRule);
@@ -234,9 +235,9 @@ class CrossProtocolIntegrationTest {
                 "scale", 1.0
         ));
 
-        Connection subToRule = new Connection();
-        Connection ruleToTrans = new Connection();
-        Connection transToWriter = new Connection();
+        Connection subToRule = new LocalConnection();
+        Connection ruleToTrans = new LocalConnection();
+        Connection transToWriter = new LocalConnection();
 
         subNode.getOutputPort("out").connect(subToRule);
         ruleNode.getOutputPort("match").connect(ruleToTrans);

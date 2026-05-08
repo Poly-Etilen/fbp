@@ -62,7 +62,7 @@ public class Flow {
             throw new IllegalArgumentException("Target port " + targetPort + " does not exist");
         }
 
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         connection.setTarget(targetNode.getInputPort(targetPort));
         sourceNode.getOutputPort(sourcePort).connect(connection);
 

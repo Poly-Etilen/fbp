@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,8 +20,8 @@ class TimeWindowRuleNodeTest {
 
     @BeforeEach
     void setUp() {
-        alertConnection = new Connection();
-        passConnection = new Connection();
+        alertConnection = new LocalConnection();
+        passConnection = new LocalConnection();
 
         // 조건: 온도가 30.0 초과
         Predicate<Message> tempOver30 = msg -> {

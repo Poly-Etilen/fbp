@@ -1,6 +1,7 @@
 package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.ModbusWriterNode;
 import com.fbp.engine.node.MqttSubscriberNode;
@@ -45,9 +46,9 @@ public class MqttToRuleToModbus {
                 "scale", 1.0
         ));
 
-        Connection subToRule = new Connection();
-        Connection ruleToTransform = new Connection();
-        Connection transformToWriter = new Connection();
+        Connection subToRule = new LocalConnection();
+        Connection ruleToTransform = new LocalConnection();
+        Connection transformToWriter = new LocalConnection();
 
         subNode.getOutputPort("out").connect(subToRule);
         ruleNode.getOutputPort("match").connect(ruleToTransform);

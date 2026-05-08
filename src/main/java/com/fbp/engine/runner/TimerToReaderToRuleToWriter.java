@@ -1,6 +1,7 @@
 package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.*;
 import com.fbp.engine.protocol.ModbusTcpClient;
@@ -58,12 +59,12 @@ public class TimerToReaderToRuleToWriter {
 
         LogNode logNode = new LogNode("log-normal");
 
-        Connection timerToReader = new Connection();
-        Connection readerToParse = new Connection();
-        Connection parseToRule = new Connection();
-        Connection ruleToControl = new Connection();
-        Connection controlToWriter = new Connection();
-        Connection ruleToLog = new Connection();
+        Connection timerToReader = new LocalConnection();
+        Connection readerToParse = new LocalConnection();
+        Connection parseToRule = new LocalConnection();
+        Connection ruleToControl = new LocalConnection();
+        Connection controlToWriter = new LocalConnection();
+        Connection ruleToLog = new LocalConnection();
 
         timerNode.getOutputPort("out").connect(timerToReader);
         readerNode.getOutputPort("out").connect(readerToParse);

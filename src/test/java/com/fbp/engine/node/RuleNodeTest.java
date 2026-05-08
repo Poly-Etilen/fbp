@@ -2,6 +2,7 @@ package com.fbp.engine.node;
 
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.core.port.InputPort;
 import com.fbp.engine.core.port.OutputPort;
 import com.fbp.engine.message.Message;
@@ -39,8 +40,8 @@ class RuleNodeTest {
         matchPort = ruleNode.getOutputPort("match");
         mismatchPort = ruleNode.getOutputPort("mismatch");
 
-        matchConnection = new Connection();
-        mismatchConnection = new Connection();
+        matchConnection = new LocalConnection();
+        mismatchConnection = new LocalConnection();
         matchPort.connect(matchConnection);
         mismatchPort.connect(mismatchConnection);
     }

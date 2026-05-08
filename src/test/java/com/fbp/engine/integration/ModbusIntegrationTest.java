@@ -1,6 +1,7 @@
 package com.fbp.engine.integration;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.ModbusReaderNode;
 import com.fbp.engine.node.ModbusWriterNode;
@@ -45,7 +46,7 @@ class ModbusIntegrationTest {
                 "count", 1
         ));
 
-        Connection outConn = new Connection();
+        Connection outConn = new LocalConnection();
         readerNode.getOutputPort("out").connect(outConn);
         readerNode.initialize();
 
@@ -110,8 +111,8 @@ class ModbusIntegrationTest {
                 "scale", 1.0
         ));
 
-        Connection readerToTransform = new Connection();
-        Connection transformToWriter = new Connection();
+        Connection readerToTransform = new LocalConnection();
+        Connection transformToWriter = new LocalConnection();
 
         readerNode.getOutputPort("out").connect(readerToTransform);
         transformNode.getOutputPort("out").connect(transformToWriter);
@@ -145,7 +146,7 @@ class ModbusIntegrationTest {
                 "count", 1
         ));
 
-        Connection errorConn = new Connection();
+        Connection errorConn = new LocalConnection();
         readerNode.getOutputPort("error").connect(errorConn);
         readerNode.initialize();
 

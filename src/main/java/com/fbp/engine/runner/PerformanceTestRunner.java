@@ -1,6 +1,7 @@
 package com.fbp.engine.runner;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.node.RuleNode;
 import com.fbp.engine.node.TransformNode;
@@ -41,9 +42,9 @@ public class PerformanceTestRunner {
             return temp != null && temp > 30.0;
         });
 
-        Connection parseToRule = new Connection();
-        Connection ruleToMatch = new Connection();
-        Connection ruleToMismatch = new Connection();
+        Connection parseToRule = new LocalConnection();
+        Connection ruleToMatch = new LocalConnection();
+        Connection ruleToMismatch = new LocalConnection();
 
         parseNode.getOutputPort("out").connect(parseToRule);
         ruleNode.getOutputPort("match").connect(ruleToMatch);

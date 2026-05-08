@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +15,7 @@ class SplitNodeTest {
     @DisplayName("조건 만족 → match 포트")
     void test1() throws InterruptedException {
         SplitNode node = new SplitNode("s1", "val", 10.0);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         node.getOutputPort("match").connect(connection);
 
         node.process(new Message(Map.of("val", 15.0)));
@@ -25,7 +26,7 @@ class SplitNodeTest {
     @DisplayName("조건 미달 → mismatch 포트")
     void test2() throws InterruptedException {
         SplitNode node = new SplitNode("s1", "val", 10.0);
-        Connection connection = new Connection();
+        Connection connection = new LocalConnection();
         node.getOutputPort("mismatch").connect(connection);
 
         node.process(new Message(Map.of("val", 0.0)));
@@ -36,8 +37,8 @@ class SplitNodeTest {
     @DisplayName("양쪽 동시 확인")
     void test3() throws InterruptedException {
         SplitNode node = new SplitNode("s1", "val", 10.0);
-        Connection matchConnection = new Connection();
-        Connection mismatchConnection = new Connection();
+        Connection matchConnection = new LocalConnection();
+        Connection mismatchConnection = new LocalConnection();
         node.getOutputPort("match").connect(matchConnection);
         node.getOutputPort("mismatch").connect(mismatchConnection);
 
@@ -52,7 +53,7 @@ class SplitNodeTest {
     @DisplayName("경계값 처리")
     void test4() throws InterruptedException {
         SplitNode node = new SplitNode("s1", "val", 10.0);
-        Connection matchConnection = new Connection();
+        Connection matchConnection = new LocalConnection();
         node.getOutputPort("match").connect(matchConnection);
 
         node.process(new Message(Map.of("val", 10.0)));

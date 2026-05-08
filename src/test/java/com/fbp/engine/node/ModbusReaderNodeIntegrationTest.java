@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import com.fbp.engine.protocol.ModbusTcpSimulator;
 import org.junit.jupiter.api.AfterEach;
@@ -67,7 +68,7 @@ class ModbusReaderNodeIntegrationTest {
         node = new ModbusReaderNode("reader", config);
         node.initialize();
 
-        Connection outConn = new Connection();
+        Connection outConn = new LocalConnection();
         node.getOutputPort("out").connect(outConn);
         node.getInputPort("trigger").receive(new Message(Map.of()));
 
@@ -97,7 +98,7 @@ class ModbusReaderNodeIntegrationTest {
         node = new ModbusReaderNode("reader", config);
         node.initialize();
 
-        Connection outConn = new Connection();
+        Connection outConn = new LocalConnection();
         node.getOutputPort("out").connect(outConn);
 
         node.getInputPort("trigger").receive(new Message(Map.of()));
@@ -124,7 +125,7 @@ class ModbusReaderNodeIntegrationTest {
         node = new ModbusReaderNode("reader", config);
         node.initialize();
 
-        Connection errConn = new Connection();
+        Connection errConn = new LocalConnection();
         node.getOutputPort("error").connect(errConn);
         node.getInputPort("trigger").receive(new Message(Map.of()));
 

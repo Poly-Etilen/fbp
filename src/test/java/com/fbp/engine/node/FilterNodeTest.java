@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ class FilterNodeTest {
     @DisplayName("조건 만족 → send 호출")
     void test1() throws InterruptedException {
         FilterNode filter = new FilterNode("filter", "temperature", 30.0);
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         filter.getOutputPort("out").connect(conn);
 
         Message passMsg = new Message(Map.of("temperature", 35.0));
@@ -28,7 +29,7 @@ class FilterNodeTest {
     @DisplayName("조건 미달 → 차단")
     void test2() {
         FilterNode filter = new FilterNode("filter", "temperature", 30.0);
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
         filter.getOutputPort("out").connect(conn);
 
         Message blockMsg = new Message(Map.of("temperature", 25.0));

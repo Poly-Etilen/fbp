@@ -1,6 +1,7 @@
 package com.fbp.engine.node;
 
 import com.fbp.engine.core.Connection;
+import com.fbp.engine.core.LocalConnection;
 import com.fbp.engine.message.Message;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ class LogNodeTest {
     @DisplayName("메시지 통과 전달")
     void test() throws InterruptedException {
         LogNode logNode = new LogNode("log-1");
-        Connection conn = new Connection();
+        Connection conn = new LocalConnection();
 
         logNode.getOutputPort("out").connect(conn);
 
@@ -32,8 +33,8 @@ class LogNodeTest {
         LogNode logNode = new LogNode("Node-Log");
         PrintNode nodeB = new PrintNode("Node-B");
 
-        Connection connAToLog = new Connection();
-        Connection connLogToB = new Connection();
+        Connection connAToLog = new LocalConnection();
+        Connection connLogToB = new LocalConnection();
 
         nodeA.getOutputPort("out").connect(connAToLog);
         logNode.getOutputPort("out").connect(connLogToB);
