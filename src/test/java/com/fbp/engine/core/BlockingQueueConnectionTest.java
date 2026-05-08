@@ -66,7 +66,7 @@ class BlockingQueueConnectionTest {
     @Test
     @DisplayName("버퍼 크기 제한")
     void test5() throws InterruptedException {
-        Connection conn = new Connection(2);
+        Connection conn = new Connection(2, null);
         conn.deliver(new Message(Map.of("id", 1)));
         conn.deliver(new Message(Map.of("id", 2)));
 

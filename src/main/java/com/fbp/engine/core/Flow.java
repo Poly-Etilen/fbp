@@ -38,6 +38,10 @@ public class Flow {
         this.name = name;
     }
 
+    public AbstractNode getNode(String id) {
+        return nodes.get(id);
+    }
+
     public Flow addNode(AbstractNode node) {
         nodes.put(node.getId(), node);
         return this;

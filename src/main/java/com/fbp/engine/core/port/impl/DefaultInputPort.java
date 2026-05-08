@@ -25,9 +25,4 @@ public class DefaultInputPort implements InputPort {
             queue.poll();
         }
     }
-
-    @Override
-    public int getQueueSize() {
-        return queue.size();
-    }
 }

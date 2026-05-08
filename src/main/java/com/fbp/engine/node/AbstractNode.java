@@ -5,7 +5,9 @@ import com.fbp.engine.core.port.InputPort;
 import com.fbp.engine.core.port.OutputPort;
 import com.fbp.engine.core.port.impl.DefaultInputPort;
 import com.fbp.engine.core.port.impl.DefaultOutputPort;
+import com.fbp.engine.core.port.impl.ErrorPort;
 import com.fbp.engine.message.Message;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -16,9 +18,13 @@ public abstract class AbstractNode implements Node {
     private final String id;
     private final Map<String, InputPort> inputPorts = new HashMap<>();
     private final Map<String, OutputPort> outputPorts = new HashMap<>();
+    public static final String ERROR_PORT = "error";
+    @Getter
+    private final ErrorPort errorPort;
 
     public AbstractNode(String id) {
         this.id = id;
+        this.errorPort = new ErrorPort(ERROR_PORT);
     }
 
     @Override
@@ -56,14 +62,11 @@ public abstract class AbstractNode implements Node {
 
     @Override
     public void process(Message message) {
-//        log.info("[{}] processing message...", id);
-        onProcess(message);
-    }
-
-    public int getInputQueueSize() {
-        return inputPorts.values().stream()
-                .mapToInt(InputPort::getQueueSize)
-                .sum();
+        try {
+            onProcess(message);
+        } catch (Exception e) {
+            errorPort.sendError(message, id, e);
+        }
     }
 
     protected abstract void onProcess(Message message);

@@ -28,7 +28,23 @@ public class DefaultOutputPort implements OutputPort {
     @Override
     public void send(Message message) {
         for (Connection conn : connections) {
-            conn.deliver(message);
+//            conn.deliver(message);
+            conn.push(message);
         }
+    }
+
+    @Override
+    public boolean isConnected() {
+        return !connections.isEmpty();
+    }
+
+    @Override
+    public void disconnect(Connection connection) {
+        this.connections.remove(connection);
+    }
+
+    @Override
+    public void disconnectAll() {
+        this.connections.clear();
     }
 }
