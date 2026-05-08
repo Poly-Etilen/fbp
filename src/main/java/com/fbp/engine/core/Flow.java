@@ -46,7 +46,34 @@ public class Flow {
         nodes.put(node.getId(), node);
         return this;
     }
+//    public Flow connect(String sourceNodeId, String sourcePort, String targetNodeId, String targetPort) {
+//        AbstractNode sourceNode = nodes.get(sourceNodeId);
+//        AbstractNode targetNode = nodes.get(targetNodeId);
+//        if (sourceNode == null) {
+//            throw new IllegalArgumentException("Source node " + sourceNodeId + " does not exist");
+//        }
+//        if (targetNode == null) {
+//            throw new IllegalArgumentException("Target node " + targetNodeId + " does not exist");
+//        }
+//        if (sourceNode.getOutputPort(sourcePort) == null) {
+//            throw new IllegalArgumentException("Source port " + sourcePort + " does not exist");
+//        }
+//        if (targetNode.getInputPort(targetPort) == null) {
+//            throw new IllegalArgumentException("Target port " + targetPort + " does not exist");
+//        }
+//
+//        Connection connection = new LocalConnection();
+//        connection.setTarget(targetNode.getInputPort(targetPort));
+//        sourceNode.getOutputPort(sourcePort).connect(connection);
+//
+//        connections.add(new FlowConnection(sourceNodeId, sourcePort, targetNodeId, targetPort, connection));
+//        return this;
+//    }
     public Flow connect(String sourceNodeId, String sourcePort, String targetNodeId, String targetPort) {
+        return connect(sourceNodeId, sourcePort, targetNodeId, targetPort, new LocalConnection());
+    }
+
+    public Flow connect(String sourceNodeId, String sourcePort, String targetNodeId, String targetPort, Connection connection) {
         AbstractNode sourceNode = nodes.get(sourceNodeId);
         AbstractNode targetNode = nodes.get(targetNodeId);
         if (sourceNode == null) {
@@ -62,7 +89,6 @@ public class Flow {
             throw new IllegalArgumentException("Target port " + targetPort + " does not exist");
         }
 
-        Connection connection = new LocalConnection();
         connection.setTarget(targetNode.getInputPort(targetPort));
         sourceNode.getOutputPort(sourcePort).connect(connection);
 
@@ -76,6 +102,7 @@ public class Flow {
 
     public void shutdown() {
         nodes.values().forEach(AbstractNode::shutdown);
+        connections.forEach(fc -> fc.getConnection().close());
     }
 
     public List<String> validate() {

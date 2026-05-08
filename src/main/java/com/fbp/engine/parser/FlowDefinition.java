@@ -14,6 +14,7 @@ public class FlowDefinition {
     private String id;
     private String name;
     private String description;
+    private TransportDefinition transport;
     private List<NodeDefinition> nodes;
     private List<ConnectionDefinition> connections;
 

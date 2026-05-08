@@ -1,13 +1,12 @@
 package com.fbp.engine.engine;
 
-import com.fbp.engine.core.Connection;
-import com.fbp.engine.core.Flow;
-import com.fbp.engine.core.FlowEngine;
-import com.fbp.engine.core.Node;
+import com.fbp.engine.bridge.MqttBridgeConnection;
+import com.fbp.engine.core.*;
 import com.fbp.engine.node.AbstractNode;
 import com.fbp.engine.parser.ConnectionDefinition;
 import com.fbp.engine.parser.FlowDefinition;
 import com.fbp.engine.parser.NodeDefinition;
+import com.fbp.engine.parser.TransportDefinition;
 import com.fbp.engine.registry.NodeRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +35,9 @@ public class FlowManager {
             flow.addNode((AbstractNode) node);
         }
 
+        TransportDefinition transport = definition.getTransport();
+        boolean useMqtt = transport != null && transport.getType().equalsIgnoreCase("mqtt");
+
         for (ConnectionDefinition connDef : definition.getConnections()) {
             String[] fromParts = connDef.getFrom().split(":");
             String[] toPart = connDef.getTo().split(":");
@@ -44,13 +46,24 @@ public class FlowManager {
                 throw new RuntimeException("잘못된 연결 방식임: " + connDef.getFrom() + " -> " + connDef.getTo());
             }
 
-            flow.connect(fromParts[0], fromParts[1], toPart[0], toPart[1]);
+            Connection connection;
+            if (useMqtt) {
+                String topic = String.format("fbp/%s/%s.%s->%s.%s", definition.getId(), fromParts[0], fromParts[1], toPart[0], toPart[1]);
+
+                connection = new MqttBridgeConnection(transport.getBroker(), topic, transport.getQos());
+                log.debug("MQTT Bridge 커넥션 생성 - 토픽: {}", topic);
+            } else {
+                connection = new LocalConnection();
+            }
+
+            flow.connect(fromParts[0], fromParts[1], toPart[0], toPart[1], connection);
         }
 
         flowEngine.register(flow);
         flowEngine.startFlow(flow.getId());
 
         activeFlows.put(flow.getId(), flow);
+        flowDefinitions.put(definition.getId(), definition);
     }
 
     public void undeploy(String flowId) {
@@ -59,6 +72,7 @@ public class FlowManager {
         }
 
         Flow flow = activeFlows.remove(flowId);
+        flowDefinitions.remove(flow.getId());
         if (flow != null) {
             flowEngine.stopFlow(flowId);
         }
