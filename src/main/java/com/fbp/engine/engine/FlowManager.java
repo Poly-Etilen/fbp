@@ -132,4 +132,95 @@ public class FlowManager {
         stats.put("deployedFlowIds", getDeployedFlowIds());
         return stats;
     }
+
+    public void addNode(String flowId, NodeDefinition nodeDef) {
+        Flow flow = getFlow(flowId);
+        if (flow == null) {
+            throw new IllegalArgumentException("플로우를 찾을 수 없습니다.");
+        }
+
+        Node node = registry.create(nodeDef.getType(), nodeDef.getId(), nodeDef.getConfig());
+        flow.addNode((AbstractNode) node);
+
+        if (flow.getState() == Flow.FlowState.RUNNING) {
+            node.initialize();
+        }
+
+        FlowDefinition def = flowDefinitions.get(flowId);
+        if (def != null) {
+            def.getNodes().add(nodeDef);
+        }
+        log.info("[{}] 동적 노드 추가 완료: {}", flowId, nodeDef.getId());
+    }
+
+    public void removeNode(String flowId, String nodeId) {
+        Flow flow = getFlow(flowId);
+        if (flow == null) {
+            return;
+        }
+
+        List<String> wiresToRemove = new ArrayList<>();
+        for (Flow.FlowConnection fc : flow.getConnections()) {
+            if (fc.getSourceNodeId().equals(nodeId) || fc.getTargetNodeId().equals(nodeId)) {
+                wiresToRemove.add(fc.getSourceNodeId());
+            }
+        }
+        wiresToRemove.forEach(wireId -> removeWire(flowId, wireId));
+
+        flow.removeNode(nodeId);
+        FlowDefinition def = flowDefinitions.get(flowId);
+        if (def != null) {
+            def.getNodes().removeIf(n -> n.getId().equals(nodeId));
+        }
+        log.info("[{}] 동적 노드 제거 완료: {}", flowId, nodeId);
+    }
+
+    public void addWire(String flowId, String from, String to) {
+        Flow flow = getFlow(flowId);
+        if (flow == null) {
+            throw new IllegalArgumentException("플로우를 찾을 수 없습니다.");
+        }
+
+        FlowDefinition def = flowDefinitions.get(flowId);
+        TransportDefinition transport = def != null ? def.getTransport() : null;
+        boolean useMqtt = transport != null && transport.getType().equalsIgnoreCase("mqtt");
+
+        String[] fromParts = from.split(":");
+        String[] toPart = to.split(":");
+
+        Connection connection;
+        if (useMqtt) {
+            String topic = String.format("fbp/%s/%s.%s->%s.%s", flowId, fromParts[0], fromParts[1], toPart[0], toPart[1]);
+            connection = new MqttBridgeConnection(transport.getBroker(), topic, transport.getQos());
+            log.debug("동적 MQTT Bridge 커넥션 생성: {}", topic);
+        } else {
+            connection = new LocalConnection();
+        }
+
+        flow.connect(fromParts[0], fromParts[1], toPart[0], toPart[1], connection);
+
+        if (def != null) {
+            ConnectionDefinition newConn = new ConnectionDefinition();
+            newConn.setFrom(from);
+            newConn.setTo(to);
+            def.getConnections().add(newConn);
+        }
+        log.info("[{}] 동적 와이어 추가 완료: {} -> {}", flowId, from, to);
+    }
+
+    public void removeWire(String flowId, String wireId) {
+        Flow flow = getFlow(flowId);
+        if (flow != null) {
+            flow.removeConnection(wireId);
+        }
+
+        FlowDefinition def = flowDefinitions.get(flowId);
+        if (def != null) {
+            def.getConnections().removeIf(c -> {
+                String id = c.getFrom() + "->" + c.getTo();
+                return id.equals(wireId);
+            });
+        }
+        log.info("[{}] 동적 와이어 제거 완료: {}", flowId, wireId);
+    }
 }

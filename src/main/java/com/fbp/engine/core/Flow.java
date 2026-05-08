@@ -46,6 +46,33 @@ public class Flow {
         nodes.put(node.getId(), node);
         return this;
     }
+
+    public void removeNode(String nodeId) {
+        AbstractNode node = nodes.remove(nodeId);
+        if (node != null) {
+            node.shutdown();
+        }
+    }
+
+    public void removeConnection(String connectionId) {
+        FlowConnection targetConn = null;
+        for (FlowConnection fc : connections) {
+            if (fc.getId().equals(connectionId)) {
+                targetConn = fc;
+                break;
+            }
+        }
+
+        if (targetConn != null) {
+            String sourcePort = targetConn.getId().split("->")[0].split(":")[1];
+            AbstractNode sourceNode = nodes.get(targetConn.getSourceNodeId());
+            if (sourceNode != null && sourceNode.getOutputPort(sourcePort) != null) {
+                sourceNode.getOutputPort(sourcePort).disconnect(targetConn.getConnection());
+            }
+            targetConn.getConnection().close();
+            connections.remove(targetConn);
+        }
+    }
 //    public Flow connect(String sourceNodeId, String sourcePort, String targetNodeId, String targetPort) {
 //        AbstractNode sourceNode = nodes.get(sourceNodeId);
 //        AbstractNode targetNode = nodes.get(targetNodeId);
